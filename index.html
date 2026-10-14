@@ -13,17 +13,28 @@
             theme: {
                 extend: {
                     colors: {
-                        quran: {
-                            emerald: '#06261a',
-                            emeraldDark: '#03140e',
-                            emeraldLight: '#0d4633',
-                            gold: '#d4af37',
-                            goldLight: '#fceda2',
-                            goldDark: '#aa8222',
+                        emerald: {
+                            950: '#080d14',
+                            900: '#0d1522',
+                            850: '#111b2b',
+                            800: '#162338',
+                            700: '#1f304c',
+                            600: '#059669',
+                            500: '#10b981',
+                            400: '#34d399',
+                            300: '#6ee7b7',
+                            200: '#a7f3d0',
+                            100: '#d1fae5'
+                        },
+                        amber: {
+                            300: '#fde047',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706'
                         }
                     },
                     fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
+                        serif: ['"Cinzel"', '"Cormorant Garamond"', 'serif'],
                         arabic: ['"Amiri"', '"Scheherazade New"', 'serif'],
                         sans: ['"Plus Jakarta Sans"', 'sans-serif']
                     }
@@ -49,180 +60,238 @@
     <div class="arabesque-overlay"></div>
 
     <!-- ==================== HEADER ==================== -->
-    <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-header border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-400 via-amber-300 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 ring-2 ring-amber-400/40 group-hover:scale-105 transition-transform">
-                    <i class="fa-solid fa-moon text-emerald-950 text-xl"></i>
+            <a href="#" class="flex items-center gap-3 group flex-shrink-0">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 via-amber-300 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 ring-1 ring-amber-400/40 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-moon text-slate-950 text-lg"></i>
                 </div>
                 <div>
-                    <span class="text-xl sm:text-2xl font-bold font-serif tracking-tight text-white flex items-center gap-2">
+                    <span class="text-lg sm:text-xl font-bold font-serif-luxury tracking-tight text-white flex items-center gap-2">
                         Luz del Corán
-                        <span class="text-[10px] uppercase font-sans font-extrabold px-2 py-0.5 rounded-full bg-emerald-800/80 text-amber-300 border border-emerald-600/40">1 a 1</span>
+                        <span class="text-[9px] uppercase font-sans font-extrabold px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">1 a 1</span>
                     </span>
-                    <span class="text-[11px] block text-emerald-300/80 tracking-widest uppercase font-semibold">ESPAÑOL & ENGLISH ACADEMY</span>
+                    <span class="text-[10px] block text-slate-400 tracking-widest uppercase font-semibold">ESPAÑOL & ENGLISH ACADEMY</span>
                 </div>
             </a>
 
             <!-- Desktop Nav Links -->
-            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-emerald-100/90">
-                <a href="#experiencia-3d" data-i18n="nav3D" class="hover:text-amber-300 transition-colors">Mushaf 3D</a>
-                <a href="#audio-estudio" data-i18n="navAudio" class="hover:text-amber-300 transition-colors">Estudio de Recitación</a>
-                <a href="#metodo" data-i18n="navTeacher" class="hover:text-amber-300 transition-colors">El Maestro</a>
-                <a href="#temario" data-i18n="navSyllabus" class="hover:text-amber-300 transition-colors">Plan de Estudios</a>
-                <a href="#suscripcion" data-i18n="navPricing" class="hover:text-amber-300 transition-colors">Suscripción ($100/mes)</a>
-                <a href="#faq" data-i18n="navFAQ" class="hover:text-amber-300 transition-colors">Preguntas Frecuentes</a>
+            <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium text-slate-300">
+                <a href="#experiencia" data-i18n="navOverview" class="hover:text-amber-400 transition-colors">Inicio</a>
+                <a href="#audio-estudio" data-i18n="navAudio" class="hover:text-amber-400 transition-colors">Recitación</a>
+                <a href="#metodo" data-i18n="navTeacher" class="hover:text-amber-400 transition-colors">El Maestro</a>
+                <a href="#temario" data-i18n="navSyllabus" class="hover:text-amber-400 transition-colors">Temario</a>
+                <a href="#suscripcion" data-i18n="navPricing" class="hover:text-amber-400 transition-colors">Precios</a>
+                <a href="#faq" data-i18n="navFAQ" class="hover:text-amber-400 transition-colors">FAQ</a>
             </nav>
 
             <!-- Actions -->
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2.5 sm:gap-3 flex-shrink-0">
                 <!-- Bilingual Language Switcher -->
-                <div class="flex items-center bg-emerald-950/90 border border-emerald-700/60 rounded-xl p-1 text-xs shadow-inner">
-                    <button class="lang-btn px-2.5 py-1 rounded-lg text-xs transition-all bg-amber-400 text-emerald-950 font-bold" data-lang="es" title="Cambiar a Español">
-                        🇪🇸 ES
+                <div class="flex items-center bg-[#0d1522] border border-white/10 rounded-xl p-1 text-xs shadow-inner">
+                    <button class="lang-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-amber-400 text-slate-950 shadow" data-lang="es" title="Cambiar a Español">
+                        ES
                     </button>
-                    <button class="lang-btn px-2.5 py-1 rounded-lg text-xs transition-all text-emerald-300 hover:text-white" data-lang="en" title="Switch to English">
-                        🇺🇸 EN
+                    <button class="lang-btn px-2.5 py-1 rounded-lg text-xs font-semibold transition-all text-slate-400 hover:text-white" data-lang="en" title="Switch to English">
+                        EN
                     </button>
                 </div>
 
-                <button data-open-subscribe class="btn-gold-shimmer font-bold text-xs sm:text-sm py-2.5 px-4 sm:px-5 rounded-xl flex items-center gap-2 shadow-md">
+                <button data-open-subscribe class="btn-modern-gold font-bold text-xs sm:text-sm py-2 px-3 sm:px-4 rounded-xl flex items-center gap-2 shadow-md">
                     <i class="fa-solid fa-sparkles text-xs"></i>
-                    <span data-i18n="btnSubscribeNav">Inscribirme · $100/mes</span>
+                    <span data-i18n="btnSubscribeNav">Inscribirme</span>
+                    <span class="hidden sm:inline text-[11px] px-1.5 py-0.5 rounded-md bg-black/20 text-slate-950 font-extrabold">$100/mes</span>
                 </button>
 
                 <!-- Mobile Menu Hamburger -->
-                <button id="mobile-menu-btn" class="md:hidden w-10 h-10 rounded-xl bg-emerald-900/60 border border-emerald-700/50 flex items-center justify-center text-amber-300">
+                <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-xl bg-slate-900/80 border border-white/10 flex items-center justify-center text-amber-400">
                     <i class="fa-solid fa-bars text-lg"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden glass-header border-b border-emerald-800/50 px-6 py-5 space-y-4 text-base">
-            <div class="flex items-center justify-between pb-3 border-b border-emerald-800/50">
-                <span class="text-xs uppercase tracking-wider text-emerald-300 font-bold">Idioma / Language</span>
-                <div class="flex items-center bg-emerald-950/90 border border-emerald-700/60 rounded-xl p-1 text-xs">
-                    <button class="lang-btn px-3 py-1 rounded-lg text-xs transition-all bg-amber-400 text-emerald-950 font-bold" data-lang="es">🇪🇸 ES</button>
-                    <button class="lang-btn px-3 py-1 rounded-lg text-xs transition-all text-emerald-300 hover:text-white" data-lang="en">🇺🇸 EN</button>
+        <div id="mobile-menu" class="hidden lg:hidden glass-header border-b border-white/10 px-6 py-5 space-y-4 text-base">
+            <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                <span class="text-xs uppercase tracking-wider text-slate-400 font-bold">Idioma / Language</span>
+                <div class="flex items-center bg-[#0d1522] border border-white/10 rounded-xl p-1 text-xs">
+                    <button class="lang-btn px-3 py-1 rounded-lg text-xs transition-all bg-amber-400 text-slate-950 font-bold" data-lang="es">🇪🇸 ES</button>
+                    <button class="lang-btn px-3 py-1 rounded-lg text-xs transition-all text-slate-400 hover:text-white" data-lang="en">🇺🇸 EN</button>
                 </div>
             </div>
-            <a href="#experiencia-3d" data-i18n="nav3D" class="block text-emerald-200 hover:text-amber-300">Mushaf 3D Interactivo</a>
-            <a href="#audio-estudio" data-i18n="navAudio" class="block text-emerald-200 hover:text-amber-300">Estudio de Audio y Fonética</a>
-            <a href="#metodo" data-i18n="navTeacher" class="block text-emerald-200 hover:text-amber-300">Conoce al Maestro</a>
-            <a href="#temario" data-i18n="navSyllabus" class="block text-emerald-200 hover:text-amber-300">Ruta de Aprendizaje</a>
-            <a href="#suscripcion" data-i18n="navPricing" class="block text-amber-300 font-bold">Suscripción Mensual ($100/mes)</a>
-            <a href="#faq" data-i18n="navFAQ" class="block text-emerald-200 hover:text-amber-300">Preguntas Frecuentes</a>
+            <a href="#experiencia" data-i18n="navOverview" class="block text-slate-200 hover:text-amber-400">Inicio</a>
+            <a href="#audio-estudio" data-i18n="navAudio" class="block text-slate-200 hover:text-amber-400">Recitación</a>
+            <a href="#metodo" data-i18n="navTeacher" class="block text-slate-200 hover:text-amber-400">El Maestro</a>
+            <a href="#temario" data-i18n="navSyllabus" class="block text-slate-200 hover:text-amber-400">Temario</a>
+            <a href="#suscripcion" data-i18n="navPricing" class="block text-amber-400 font-bold">Precios ($100/mes)</a>
+            <a href="#faq" data-i18n="navFAQ" class="block text-slate-200 hover:text-amber-400">FAQ</a>
         </div>
     </header>
 
-    <!-- ==================== HERO SECTION WITH 3D QURAN ==================== -->
-    <section id="experiencia-3d" class="relative pt-32 pb-20 lg:pt-36 lg:pb-28 overflow-hidden">
+    <!-- ==================== HERO SECTION WITH INTERACTIVE SACRED SHOWCASE ==================== -->
+    <section id="experiencia" class="relative pt-32 pb-20 lg:pt-36 lg:pb-28 overflow-hidden modern-grid-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
                 <!-- Left Column: Copy & Value Proposition -->
                 <div class="lg:col-span-6 space-y-6 text-center lg:text-left z-10">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/70 border border-amber-400/40 text-amber-300 text-xs font-semibold uppercase tracking-wider shadow-inner">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-amber-400/30 text-amber-300 text-xs font-semibold uppercase tracking-wider shadow-inner">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                         <span data-i18n="heroPill">Matrícula Abierta · Plazas Limitadas</span>
                     </div>
 
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white leading-tight">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif-luxury font-bold text-white leading-tight">
                         <span data-i18n="heroTitleStart">Aprende el </span>
                         <span class="text-gold-gradient" data-i18n="heroTitleHighlight">Sagrado Corán</span>
                         <span data-i18n="heroTitleEnd"> desde cero y a tu propio ritmo</span>
                     </h1>
 
-                    <p data-i18n="heroSubtitle" class="text-base sm:text-lg text-emerald-100/85 max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                    <p data-i18n="heroSubtitle" class="text-base sm:text-lg text-slate-300 max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
                         Clases particulares en vivo <strong>1 a 1 guiadas por el Ustadz</strong>, diseñadas con paciencia y una metodología fonética creada especialmente para la comunidad hispanohablante y angloparlante.
                     </p>
 
                     <!-- Key highlights Pills -->
                     <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
-                        <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-950/70 border border-emerald-700/50 text-xs text-emerald-200">
+                        <div class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 border border-white/10 text-xs text-slate-200">
                             <i class="fa-solid fa-check-circle text-amber-400"></i>
                             <span data-i18n="pillSessions">2 Sesiones semanales de 1 hora</span>
                         </div>
-                        <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-950/70 border border-emerald-700/50 text-xs text-emerald-200">
-                            <i class="fa-solid fa-video text-amber-400"></i>
+                        <div class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 border border-white/10 text-xs text-slate-200">
+                            <i class="fa-solid fa-video text-emerald-400"></i>
                             <span data-i18n="pillPlatform">En vivo por Zoom / Meet</span>
                         </div>
-                        <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-950/70 border border-emerald-700/50 text-xs text-emerald-200">
+                        <div class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 border border-amber-400/30 text-xs text-amber-300 font-bold">
                             <i class="fa-solid fa-tag text-amber-400"></i>
-                            <span data-i18n="pillPrice" class="font-bold text-white">$100 USD / mes</span>
+                            <span data-i18n="pillPrice">$100 USD / mes</span>
                         </div>
                     </div>
 
                     <!-- Hero Call to Action Buttons -->
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-                        <button data-open-subscribe class="w-full sm:w-auto btn-gold-shimmer font-bold text-base py-4 px-8 rounded-2xl flex items-center justify-center gap-3 shadow-xl">
+                        <button data-open-subscribe class="w-full sm:w-auto btn-modern-gold font-bold text-base py-4 px-8 rounded-2xl flex items-center justify-center gap-3 shadow-xl">
                             <i class="fa-solid fa-graduation-cap text-lg"></i>
                             <span data-i18n="btnHeroEnroll">Inscribirme Ahora · $100/mes</span>
                         </button>
-                        <a href="#diagnostico" class="w-full sm:w-auto px-6 py-4 rounded-2xl bg-emerald-900/60 hover:bg-emerald-800/80 text-emerald-200 hover:text-white font-semibold text-sm border border-emerald-700/60 transition-all flex items-center justify-center gap-2">
+                        <a href="#diagnostico" class="w-full sm:w-auto btn-modern-secondary px-6 py-4 rounded-2xl font-semibold text-sm flex items-center justify-center gap-2">
                             <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i>
                             <span data-i18n="btnHeroDiagnosis">Clase de Diagnóstico Gratuita</span>
                         </a>
                     </div>
 
                     <!-- Trust indicators -->
-                    <div class="pt-4 flex items-center justify-center lg:justify-start gap-6 text-xs text-emerald-300/80">
+                    <div class="pt-4 flex items-center justify-center lg:justify-start gap-6 text-xs text-slate-400">
                         <div class="flex items-center gap-1.5">
                             <i class="fa-solid fa-shield-halved text-amber-400"></i>
                             <span data-i18n="trustSatisfaction">Garantía de satisfacción</span>
                         </div>
                         <div class="flex items-center gap-1.5">
-                            <i class="fa-solid fa-earth-americas text-amber-400"></i>
+                            <i class="fa-solid fa-earth-americas text-emerald-400"></i>
                             <span data-i18n="trustReach">España, Latam y EE.UU.</span>
                         </div>
                         <div class="flex items-center gap-1.5">
-                            <i class="fa-solid fa-comments text-amber-400"></i>
+                            <i class="fa-brands fa-whatsapp text-green-400"></i>
                             <span data-i18n="trustSupport">Soporte por WhatsApp</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Column: Interactive 3D Quran Viewport -->
+                <!-- Right Column: Modern Interactive Sacred Quran Showcase -->
                 <div class="lg:col-span-6 relative z-10">
-                    <div class="relative glass-card rounded-3xl p-4 sm:p-6 shadow-2xl overflow-hidden border border-amber-400/30">
+                    <div class="relative hero-hologram-card p-6 sm:p-7 transition-all duration-300" id="hero-interactive-showcase">
                         
-                        <!-- 3D Header & State Pill -->
-                        <div class="flex items-center justify-between mb-3 px-2">
+                        <!-- Ambient Aurora Glow inside Card -->
+                        <div class="aurora-glow -top-32 -right-32 opacity-70"></div>
+
+                        <!-- Showcase Top Bar -->
+                        <div class="flex items-center justify-between mb-5 relative z-10">
                             <div class="flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
-                                <span data-i18n="badge3D" class="text-xs uppercase font-extrabold tracking-wider text-amber-300">Mushaf 3D Interactivo</span>
+                                <span class="relative flex h-2.5 w-2.5">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+                                </span>
+                                <span data-i18n="heroCardBadge" class="text-xs uppercase font-extrabold tracking-wider text-amber-300">Recitación en Vivo & Tajweed</span>
                             </div>
-                            <span class="text-[11px] text-emerald-300/80 flex items-center gap-1">
-                                <i class="fa-solid fa-hand-pointer text-amber-400"></i> <span data-i18n="hint3D">Arrastra para rotar en 360°</span>
-                            </span>
+
+                            <!-- Animated Audio Equalizer -->
+                            <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 border border-white/10" id="hero-soundwave" title="Audio Waveform">
+                                <span class="eq-bar"></span>
+                                <span class="eq-bar"></span>
+                                <span class="eq-bar"></span>
+                                <span class="eq-bar"></span>
+                                <span class="eq-bar"></span>
+                                <span class="text-[10px] text-emerald-400 font-mono font-bold ml-1">AUDIO HD</span>
+                            </div>
                         </div>
 
-                        <!-- 3D Canvas Container -->
-                        <div id="quran-3d-canvas-container" class="rounded-2xl bg-gradient-to-b from-emerald-950/80 to-[#02100a] border border-emerald-800/40 relative">
-                            <!-- Overlay badge inside 3D canvas -->
-                            <div class="absolute bottom-4 left-4 z-20 pointer-events-none bg-emerald-950/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-amber-500/20 text-[11px] text-emerald-200">
-                                <span class="font-serif italic text-amber-300 font-bold">Al-Fātiḥah & Ayat Al-Kursī</span> · <span data-i18n="edition3D">Edición Dorada</span>
+                        <!-- Surah Switcher Chips -->
+                        <div class="flex items-center gap-2 mb-4 relative z-10">
+                            <button id="hero-tab-fatihah" class="hero-surah-tab active px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-amber-400 text-slate-950 shadow-md flex items-center gap-1.5">
+                                <i class="fa-solid fa-book-quran"></i>
+                                <span data-i18n="heroTabFatihah">Al-Fātiḥah</span>
+                            </button>
+                            <button id="hero-tab-kursi" class="hero-surah-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-slate-900/80 text-slate-300 hover:text-white border border-white/10 hover:border-amber-400/40 flex items-center gap-1.5">
+                                <i class="fa-solid fa-crown text-amber-400"></i>
+                                <span data-i18n="heroTabKursi">Ayat Al-Kursī</span>
+                            </button>
+                            <span class="ml-auto text-[11px] text-slate-400 hidden sm:inline" data-i18n="heroCardHint">Toca una aleya para escuchar</span>
+                        </div>
+
+                        <!-- Sacred Calligraphy Frame (with 3D tilt effect) -->
+                        <div id="hero-manuscript-card" class="bg-gradient-to-b from-[#0c121e]/90 to-[#070a10]/95 rounded-2xl p-6 sm:p-7 border border-amber-400/25 shadow-2xl relative z-10 text-center transition-transform duration-200">
+                            <div class="flex items-center justify-between text-[11px] text-amber-400/80 border-b border-white/10 pb-3 mb-4">
+                                <span id="hero-surah-name" class="font-serif-luxury font-bold tracking-wider">SURAH AL-FĀTIḤAH (1:1-7)</span>
+                                <span class="font-mono text-emerald-400 font-semibold flex items-center gap-1">
+                                    <i class="fa-solid fa-volume-high"></i> Sheikh Al-Afasy
+                                </span>
+                            </div>
+
+                            <!-- Big Sacred Calligraphy Display -->
+                            <div class="min-h-[90px] flex items-center justify-center py-2">
+                                <p id="hero-arabic-calligraphy" class="font-arabic text-2xl sm:text-3xl lg:text-4xl leading-loose text-transparent bg-clip-text bg-gradient-to-r from-amber-100 via-amber-200 to-amber-300 transition-all duration-300 select-none drop-shadow" dir="rtl">
+                                    بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+                                </p>
+                            </div>
+
+                            <!-- Interactive Ayah Number Selector Capsules -->
+                            <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap" id="hero-ayah-pills">
+                                <!-- Populated dynamically by js/main.js -->
                             </div>
                         </div>
 
-                        <!-- 3D Scene Controls Bar -->
-                        <div class="mt-4 pt-3 border-t border-emerald-800/40 flex flex-wrap items-center justify-between gap-3 text-xs">
-                            <div class="flex items-center gap-2">
-                                <button id="btn-toggle-3d-book" class="px-3.5 py-2 rounded-xl bg-emerald-900/80 hover:bg-emerald-800 text-emerald-200 hover:text-white border border-emerald-700/60 font-medium flex items-center gap-2 transition-all">
-                                    <i class="fa-solid fa-book text-amber-400"></i>
-                                    <span data-i18n="btnViewClosed">Ver Libro Cerrado</span>
-                                </button>
-                                <button id="btn-reset-3d-view" class="px-3.5 py-2 rounded-xl bg-emerald-900/80 hover:bg-emerald-800 text-emerald-200 hover:text-white border border-emerald-700/60 font-medium flex items-center gap-2 transition-all">
-                                    <i class="fa-solid fa-rotate text-amber-400"></i>
-                                    <span data-i18n="btnResetView">Centrar Ángulo</span>
-                                </button>
+                        <!-- Guided Phonetics & Translation Drawer -->
+                        <div class="mt-4 p-4 rounded-xl bg-slate-900/70 border border-white/10 relative z-10 space-y-2">
+                            <div class="flex items-start justify-between gap-3">
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-emerald-400 tracking-wider">Pronunciación Fonética:</span>
+                                    <p id="hero-verse-phonetic" class="text-xs sm:text-sm text-white font-medium italic mt-0.5 font-mono">
+                                        Bismi Al-lāhi Ar-Rahmāni Ar-Rahīm
+                                    </p>
+                                </div>
+                                <span id="hero-active-ayah-num" class="px-2 py-0.5 rounded-md bg-amber-400/10 text-amber-300 border border-amber-400/30 text-[11px] font-bold">
+                                    Aleya 1
+                                </span>
                             </div>
-                            <span class="text-[11px] text-amber-300/90 font-mono">
-                                <i class="fa-solid fa-lightbulb text-amber-400"></i> <span data-i18n="standLabel">Rihl tallado & caligrafía</span>
-                            </span>
+                            <div>
+                                <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Significado:</span>
+                                <p id="hero-verse-translation" class="text-xs text-slate-300 mt-0.5 leading-relaxed">
+                                    En el nombre de Dios, el Compasivo, el Misericordioso.
+                                </p>
+                            </div>
                         </div>
+
+                        <!-- Action Bar inside Showcase -->
+                        <div class="mt-4 flex items-center justify-between gap-3 relative z-10">
+                            <button id="hero-btn-play-all" class="btn-modern-gold px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow-md">
+                                <i class="fa-solid fa-play text-xs" id="hero-play-icon"></i>
+                                <span id="hero-play-text" data-i18n="heroPlayFull">Escuchar Completa</span>
+                            </button>
+                            <button data-open-subscribe class="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-amber-300 hover:text-white border border-white/10 hover:border-amber-400/40 text-xs font-semibold transition-all flex items-center gap-1.5">
+                                <span>Aprender con el Maestro</span>
+                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+
                     </div>
                 </div>
 
@@ -231,24 +300,24 @@
     </section>
 
     <!-- ==================== HIGHLIGHT STATS BAR ==================== -->
-    <section class="py-10 border-y border-emerald-800/40 bg-emerald-950/40 backdrop-blur-md">
+    <section class="py-10 border-y border-white/10 bg-[#0a0f18]/60 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 <div class="p-4">
-                    <p data-i18n="stat1Num" class="text-3xl sm:text-4xl font-serif font-bold text-amber-300 mb-1">1 a 1</p>
-                    <p data-i18n="stat1Label" class="text-xs uppercase font-semibold tracking-wider text-emerald-200/80">Atención Personalizada</p>
+                    <p data-i18n="stat1Num" class="text-3xl sm:text-4xl font-serif-luxury font-bold text-amber-300 mb-1">1 a 1</p>
+                    <p data-i18n="stat1Label" class="text-xs uppercase font-semibold tracking-wider text-slate-300">Atención Personalizada</p>
                 </div>
-                <div class="p-4 border-l border-emerald-800/40">
-                    <p data-i18n="stat2Num" class="text-3xl sm:text-4xl font-serif font-bold text-amber-300 mb-1">2 h / sem</p>
-                    <p data-i18n="stat2Label" class="text-xs uppercase font-semibold tracking-wider text-emerald-200/80">2 Sesiones de 1 hora semanales</p>
+                <div class="p-4 border-l border-white/10">
+                    <p data-i18n="stat2Num" class="text-3xl sm:text-4xl font-serif-luxury font-bold text-amber-300 mb-1">2 h / sem</p>
+                    <p data-i18n="stat2Label" class="text-xs uppercase font-semibold tracking-wider text-slate-300">2 Sesiones de 1 hora semanales</p>
                 </div>
-                <div class="p-4 border-l border-emerald-800/40">
-                    <p data-i18n="stat3Num" class="text-3xl sm:text-4xl font-serif font-bold text-amber-300 mb-1">$100</p>
-                    <p data-i18n="stat3Label" class="text-xs uppercase font-semibold tracking-wider text-emerald-200/80">USD / mes (Tarifa plana)</p>
+                <div class="p-4 border-l border-white/10">
+                    <p data-i18n="stat3Num" class="text-3xl sm:text-4xl font-serif-luxury font-bold text-amber-300 mb-1">$100</p>
+                    <p data-i18n="stat3Label" class="text-xs uppercase font-semibold tracking-wider text-slate-300">USD / mes (Tarifa plana)</p>
                 </div>
-                <div class="p-4 border-l border-emerald-800/40">
-                    <p data-i18n="stat4Num" class="text-3xl sm:text-4xl font-serif font-bold text-amber-300 mb-1">Bilingüe</p>
-                    <p data-i18n="stat4Label" class="text-xs uppercase font-semibold tracking-wider text-emerald-200/80">Enseñanza en Español e Inglés</p>
+                <div class="p-4 border-l border-white/10">
+                    <p data-i18n="stat4Num" class="text-3xl sm:text-4xl font-serif-luxury font-bold text-amber-300 mb-1">Bilingüe</p>
+                    <p data-i18n="stat4Label" class="text-xs uppercase font-semibold tracking-wider text-slate-300">Enseñanza en Español e Inglés</p>
                 </div>
             </div>
         </div>
@@ -944,11 +1013,11 @@
                 <div>
                     <h4 data-i18n="footerQuickLinks" class="font-bold text-white uppercase tracking-wider mb-3 text-xs">Acceso Rápido</h4>
                     <ul class="space-y-2">
-                        <li><a href="#experiencia-3d" data-i18n="nav3D" class="hover:text-amber-300 transition-colors">Mushaf 3D Interactivo</a></li>
-                        <li><a href="#audio-estudio" data-i18n="navAudio" class="hover:text-amber-300 transition-colors">Estudio de Recitación</a></li>
-                        <li><a href="#metodo" data-i18n="navTeacher" class="hover:text-amber-300 transition-colors">Sobre el Maestro</a></li>
-                        <li><a href="#temario" data-i18n="navSyllabus" class="hover:text-amber-300 transition-colors">Ruta de Tajweed</a></li>
-                        <li><a href="#suscripcion" data-i18n="navPricing" class="hover:text-amber-300 transition-colors">Suscripción ($100/mes)</a></li>
+                        <li><a href="#experiencia" data-i18n="navOverview" class="hover:text-amber-400 transition-colors">Inicio</a></li>
+                        <li><a href="#audio-estudio" data-i18n="navAudio" class="hover:text-amber-400 transition-colors">Recitación</a></li>
+                        <li><a href="#metodo" data-i18n="navTeacher" class="hover:text-amber-400 transition-colors">Sobre el Maestro</a></li>
+                        <li><a href="#temario" data-i18n="navSyllabus" class="hover:text-amber-400 transition-colors">Temario</a></li>
+                        <li><a href="#suscripcion" data-i18n="navPricing" class="hover:text-amber-400 transition-colors">Precios ($100/mes)</a></li>
                     </ul>
                 </div>
 
@@ -1288,16 +1357,12 @@
         </div>
     </div>
 
-    <!-- Three.js (r128) CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
     <!-- Canvas Confetti CDN -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 
     <!-- Custom Modules -->
     <script src="js/translations.js"></script>
     <script src="js/config.js"></script>
-    <script src="js/three-scene.js"></script>
     <script src="js/audio-player.js"></script>
     <script src="js/subscription-modal.js"></script>
     <script src="js/main.js"></script>

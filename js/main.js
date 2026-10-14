@@ -25,25 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.quranAudioPlayer.loadSurah(window.quranAudioPlayer.currentSurahIndex);
                 }
 
-                // Update 3D canvas textures and button text
-                if (window.quran3DInstance) {
-                    if (window.quran3DInstance.updateLanguageTextures) {
-                        window.quran3DInstance.updateLanguageTextures();
-                    }
-                    const toggleBookBtn = document.getElementById('btn-toggle-3d-book');
-                    if (toggleBookBtn) {
-                        const isOpen = window.quran3DInstance.isOpen;
-                        const isEn = lang === 'en';
-                        if (isOpen) {
-                            toggleBookBtn.innerHTML = isEn 
-                                ? '<i class="fa-solid fa-book text-amber-400"></i><span>View Closed Book</span>'
-                                : '<i class="fa-solid fa-book text-amber-400"></i><span>Ver Libro Cerrado</span>';
-                        } else {
-                            toggleBookBtn.innerHTML = isEn 
-                                ? '<i class="fa-solid fa-book-open text-amber-400"></i><span>Open Quran (Al-Fātiḥah)</span>'
-                                : '<i class="fa-solid fa-book-open text-amber-400"></i><span>Abrir Corán (Al-Fātiḥah)</span>';
-                        }
-                    }
+                // Update Hero Interactive Showcase in new language
+                if (typeof window.updateHeroShowcaseLang === 'function') {
+                    window.updateHeroShowcaseLang();
                 }
             });
         });
@@ -51,31 +35,311 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initLanguage();
 
-    // 2. Initialize 3D WebGL Scene
-    const sceneContainer = document.getElementById('quran-3d-canvas-container');
-    if (sceneContainer && typeof window.initQuran3D === 'function') {
-        window.quran3DInstance = window.initQuran3D('quran-3d-canvas-container');
+    // 2. Initialize Modern Interactive Sacred Quran Showcase
+    const initHeroInteractiveShowcase = () => {
+        const showcase = document.getElementById('hero-interactive-showcase');
+        if (!showcase) return;
 
-        // Hook 3D interactive controls
-        const toggleBookBtn = document.getElementById('btn-toggle-3d-book');
-        const resetViewBtn = document.getElementById('btn-reset-3d-view');
+        const heroSurahs = {
+            fatihah: {
+                id: 'fatihah',
+                nameEs: 'SURAH AL-FĀTIḤAH (1:1-7)',
+                nameEn: 'SURAH AL-FĀTIḤAH (1:1-7)',
+                verses: [
+                    {
+                        num: 1,
+                        ar: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
+                        phonetic: 'Bismi Al-lāhi Ar-Rahmāni Ar-Rahīm',
+                        es: 'En el nombre de Dios, el Compasivo, el Misericordioso.',
+                        en: 'In the name of God, the Entirely Merciful, the Especially Merciful.',
+                        audio: 'https://everyayah.com/data/Alafasy_128kbps/001001.mp3'
+                    },
+                    {
+                        num: 2,
+                        ar: 'الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ',
+                        phonetic: 'Al-hamdu lil-lāhi Rabbi Al-‘Ālamīn',
+                        es: 'Todas las alabanzas son para Dios, Señor de todos los mundos.',
+                        en: '[All] praise is due to God, Lord of the worlds.',
+                        audio: 'https://everyayah.com/data/Alafasy_128kbps/001002.mp3'
+                    },
+                    {
+                        num: 3,
+                        ar: 'الرَّحْمَٰنِ الرَّحِيمِ',
+                        phonetic: 'Ar-Rahmāni Ar-Rahīm',
+                        es: 'El Clemente, el Misericordioso.',
+                        en: 'The Entirely Merciful, the Especially Merciful.',
+                        audio: 'https://everyayah.com/data/Alafasy_128kbps/001003.mp3'
+                    },
+                    {
+                        num: 4,
+                        ar: 'مَالِكِ يَوْمِ الدِّينِ',
+                        phonetic: 'Māliki Yawmi Ad-Dīn',
+                        es: 'Soberano Absoluto del Día del Juicio.',
+                        en: 'Sovereign of the Day of Recompense.',
+                        audio: 'https://everyayah.com/data/Alafasy_128kbps/001004.mp3'
+                    },
+                    {
+                        num: 5,
+                        ar: 'إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ',
+                        phonetic: 'Iyyāka na‘budu wa-iyyāka nasta‘īn',
+                        es: 'Solo a Ti adoramos y solo de Ti imploramos ayuda.',
+                        en: 'It is You we worship and You we ask for help.',
+                        audio: 'https://everyayah.com/data/Alafasy_128kbps/001005.mp3'
+                    },
+                    {
+                        num: 6,
+                        ar: 'اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ',
+                        phonetic: 'Ihdinā As-Sirāta Al-Mustaqīm',
+                        es: 'Guíanos por el sendero recto,',
+                        en: 'Guide us to the straight path,',
+                        audio: 'https://everyayah.com/data/Alafasy_128kbps/001006.mp3'
+                    },
+                    {
+                        num: 7,
+                        ar: 'صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ',
+                        phonetic: 'Sirāta Al-ladhīna an‘amta ‘alayhim ghayril maghdūbi ‘alayhim walad-dāllīn',
+                        es: 'El sendero de aquellos a quienes has agraciado, no el de los que han incurrido en Tu ira, ni el de los extraviados.',
+                        en: 'The path of those upon whom You have bestowed favor, not of those who have evoked anger or are astray.',
+                        audio: 'https://everyayah.com/data/Alafasy_128kbps/001007.mp3'
+                    }
+                ]
+            },
+            kursi: {
+                id: 'kursi',
+                nameEs: 'AYAT AL-KURSĪ (2:255)',
+                nameEn: 'AYAT AL-KURSĪ (2:255)',
+                verses: [
+                    {
+                        num: 1,
+                        ar: 'اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ',
+                        phonetic: 'Allāhu lā ilāha illā Huwa Al-Hayyu Al-Qayyūm, lā ta’khudhuhu sinatun walā nawm',
+                        es: '¡Dios! No hay más divinidad que Él, el Viviente, el Subsistente. Ni el sueño ni la somnolencia se apoderan de Él.',
+                        en: 'God! There is no deity except Him, the Ever-Living, the Sustainer of all existence. Neither drowsiness overtakes Him nor sleep.',
+                        audio: 'https://everyayah.com/data/Alafasy_128kbps/002255.mp3'
+                    },
+                    {
+                        num: 2,
+                        ar: 'لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ',
+                        phonetic: 'Llahu mā fīs-samāwāti wamā fīl-ard, man dhal-ladhī yashfa‘u ‘indahū illā bi’idhnih',
+                        es: 'Suyo es cuanto hay en los cielos y en la tierra. ¿Quién podrá interceder ante Él sin Su anuencia?',
+                        en: 'To Him belongs whatever is in the heavens and whatever is on the earth. Who is it that can intercede with Him except by His permission?',
+                        audio: 'https://everyayah.com/data/Alafasy_128kbps/002255.mp3'
+                    },
+                    {
+                        num: 3,
+                        ar: 'يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ',
+                        phonetic: 'Ya‘lamu mā bayna aydīhim wamā khalfahum, walā yuhītūna bishay’in min ‘ilmihī illā bimā shā’',
+                        es: 'Conoce lo que fue y lo que será, y los seres humanos no abarcan de Su conocimiento sino lo que Él desea.',
+                        en: 'He knows what is before them and what will be after them, and they encompass not a thing of His knowledge except for what He wills.',
+                        audio: 'https://everyayah.com/data/Alafasy_128kbps/002255.mp3'
+                    },
+                    {
+                        num: 4,
+                        ar: 'وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ',
+                        phonetic: 'Wasi‘a kursiyyuhus-samāwāti wal-arda, walā ya’ūduhū hifzuhumā, wa-Huwal ‘Aliyyul ‘Azīm',
+                        es: 'Su Trono abarca los cielos y la tierra, y Su preservación no Le causa fatiga. Él es el Altísimo, el Sublime.',
+                        en: 'His Kursī extends over the heavens and the earth, and their preservation tires Him not. And He is the Most High, the Most Great.',
+                        audio: 'https://everyayah.com/data/Alafasy_128kbps/002255.mp3'
+                    }
+                ]
+            }
+        };
 
-        if (toggleBookBtn && window.quran3DInstance) {
-            toggleBookBtn.addEventListener('click', () => {
-                const isOpen = window.quran3DInstance.toggleBookState();
+        let currentSurahKey = 'fatihah';
+        let currentAyahIndex = 0;
+        let isPlayingFull = false;
+        let audioPlayer = new Audio();
+
+        const elSurahName = document.getElementById('hero-surah-name');
+        const elCalligraphy = document.getElementById('hero-arabic-calligraphy');
+        const elPhonetic = document.getElementById('hero-verse-phonetic');
+        const elTranslation = document.getElementById('hero-verse-translation');
+        const elAyahNumBadge = document.getElementById('hero-active-ayah-num');
+        const elPillsContainer = document.getElementById('hero-ayah-pills');
+        const btnPlayAll = document.getElementById('hero-btn-play-all');
+        const playIcon = document.getElementById('hero-play-icon');
+        const playText = document.getElementById('hero-play-text');
+        const soundwave = document.getElementById('hero-soundwave');
+        const tabFatihah = document.getElementById('hero-tab-fatihah');
+        const tabKursi = document.getElementById('hero-tab-kursi');
+        const manuscriptCard = document.getElementById('hero-manuscript-card');
+
+        // Set visual equalizer state
+        const setEqualizerActive = (active) => {
+            if (!soundwave) return;
+            const bars = soundwave.querySelectorAll('.eq-bar');
+            bars.forEach(b => {
+                b.style.animationPlayState = active ? 'running' : 'paused';
+            });
+        };
+        setEqualizerActive(false);
+
+        // Render Ayah Pills
+        const renderPills = () => {
+            if (!elPillsContainer) return;
+            const surah = heroSurahs[currentSurahKey];
+            elPillsContainer.innerHTML = '';
+
+            surah.verses.forEach((v, idx) => {
+                const pill = document.createElement('button');
+                pill.type = 'button';
+                const isActive = idx === currentAyahIndex;
+                pill.className = `w-8 h-8 rounded-xl font-mono text-xs font-bold transition-all flex items-center justify-center ${
+                    isActive 
+                        ? 'bg-amber-400 text-slate-950 shadow-lg scale-110 ring-2 ring-amber-400/50' 
+                        : 'bg-slate-900/80 text-slate-400 hover:text-white border border-white/10 hover:border-amber-400/40'
+                }`;
+                pill.textContent = v.num;
+                pill.title = `Aleya ${v.num}`;
+                pill.addEventListener('click', () => {
+                    selectAyah(idx, true);
+                });
+                elPillsContainer.appendChild(pill);
+            });
+        };
+
+        // Select and display Ayah
+        const selectAyah = (index, autoPlay = false) => {
+            const surah = heroSurahs[currentSurahKey];
+            if (index < 0 || index >= surah.verses.length) return;
+            currentAyahIndex = index;
+            const verse = surah.verses[index];
+            const isEn = window.currentLanguage === 'en';
+
+            if (elSurahName) {
+                elSurahName.textContent = isEn ? surah.nameEn : surah.nameEs;
+            }
+
+            if (elCalligraphy) {
+                elCalligraphy.style.opacity = '0';
+                setTimeout(() => {
+                    elCalligraphy.textContent = verse.ar;
+                    elCalligraphy.style.opacity = '1';
+                }, 120);
+            }
+
+            if (elPhonetic) elPhonetic.textContent = verse.phonetic;
+            if (elTranslation) elTranslation.textContent = isEn ? verse.en : verse.es;
+            if (elAyahNumBadge) {
+                elAyahNumBadge.textContent = isEn ? `Verse ${verse.num}` : `Aleya ${verse.num}`;
+            }
+
+            // Update pills highlight
+            renderPills();
+
+            // Play single ayah audio
+            if (autoPlay) {
+                audioPlayer.pause();
+                audioPlayer.src = verse.audio;
+                audioPlayer.play().then(() => {
+                    setEqualizerActive(true);
+                }).catch(err => {
+                    console.log('Autoplay prevented or network error:', err);
+                });
+            }
+        };
+
+        audioPlayer.addEventListener('ended', () => {
+            if (isPlayingFull) {
+                const surah = heroSurahs[currentSurahKey];
+                if (currentAyahIndex + 1 < surah.verses.length) {
+                    selectAyah(currentAyahIndex + 1, true);
+                } else {
+                    stopPlayAll();
+                }
+            } else {
+                setEqualizerActive(false);
+            }
+        });
+
+        audioPlayer.addEventListener('pause', () => {
+            if (!isPlayingFull) setEqualizerActive(false);
+        });
+
+        const stopPlayAll = () => {
+            isPlayingFull = false;
+            audioPlayer.pause();
+            setEqualizerActive(false);
+            if (playIcon) playIcon.className = 'fa-solid fa-play text-xs';
+            if (playText) {
                 const isEn = window.currentLanguage === 'en';
-                toggleBookBtn.innerHTML = isOpen 
-                    ? `<i class="fa-solid fa-book text-amber-400"></i><span>${isEn ? 'View Closed Book' : 'Ver Libro Cerrado'}</span>`
-                    : `<i class="fa-solid fa-book-open text-amber-400"></i><span>${isEn ? 'Open Quran (Al-Fātiḥah)' : 'Abrir Corán (Al-Fātiḥah)'}</span>`;
+                playText.textContent = isEn ? 'Play Full Surah' : 'Escuchar Completa';
+            }
+        };
+
+        const startPlayAll = () => {
+            isPlayingFull = true;
+            if (playIcon) playIcon.className = 'fa-solid fa-pause text-xs';
+            if (playText) {
+                const isEn = window.currentLanguage === 'en';
+                playText.textContent = isEn ? 'Pause' : 'Pausar';
+            }
+            selectAyah(0, true);
+        };
+
+        if (btnPlayAll) {
+            btnPlayAll.addEventListener('click', () => {
+                if (isPlayingFull) {
+                    stopPlayAll();
+                } else {
+                    startPlayAll();
+                }
             });
         }
 
-        if (resetViewBtn && window.quran3DInstance) {
-            resetViewBtn.addEventListener('click', () => {
-                window.quran3DInstance.resetView();
+        // Tab switches
+        if (tabFatihah && tabKursi) {
+            tabFatihah.addEventListener('click', () => {
+                if (currentSurahKey === 'fatihah') return;
+                stopPlayAll();
+                currentSurahKey = 'fatihah';
+                tabFatihah.className = 'hero-surah-tab active px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-amber-400 text-slate-950 shadow-md flex items-center gap-1.5';
+                tabKursi.className = 'hero-surah-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-slate-900/80 text-slate-300 hover:text-white border border-white/10 hover:border-amber-400/40 flex items-center gap-1.5';
+                selectAyah(0, false);
+            });
+
+            tabKursi.addEventListener('click', () => {
+                if (currentSurahKey === 'kursi') return;
+                stopPlayAll();
+                currentSurahKey = 'kursi';
+                tabKursi.className = 'hero-surah-tab active px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-amber-400 text-slate-950 shadow-md flex items-center gap-1.5';
+                tabFatihah.className = 'hero-surah-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-slate-900/80 text-slate-300 hover:text-white border border-white/10 hover:border-amber-400/40 flex items-center gap-1.5';
+                selectAyah(0, false);
             });
         }
-    }
+
+        // 3D Tilt Interaction on Card
+        if (manuscriptCard && window.matchMedia('(hover: hover)').matches) {
+            manuscriptCard.addEventListener('mousemove', (e) => {
+                const rect = manuscriptCard.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -6; // max 6 deg
+                const rotateY = ((x - centerX) / centerX) * 6;  // max 6 deg
+                manuscriptCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.015, 1.015, 1.015)`;
+            });
+
+            manuscriptCard.addEventListener('mouseleave', () => {
+                manuscriptCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        }
+
+        // Language updater hook
+        window.updateHeroShowcaseLang = () => {
+            selectAyah(currentAyahIndex, false);
+            if (!isPlayingFull && playText) {
+                const isEn = window.currentLanguage === 'en';
+                playText.textContent = isEn ? 'Play Full Surah' : 'Escuchar Completa';
+            }
+        };
+
+        // Initial render
+        selectAyah(0, false);
+    };
+
+    initHeroInteractiveShowcase();
 
     // 3. Initialize Interactive Bilingual Audio Player
     if (typeof window.initQuranAudioPlayer === 'function') {

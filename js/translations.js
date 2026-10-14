@@ -1,19 +1,20 @@
 /**
  * Luz del Corán / Light of the Quran - Bilingual Translation Dictionary (ES / EN)
- * Complete translations for navigation, hero, 3D controls, audio studio, curriculum,
+ * Complete translations for navigation, hero showcase, audio studio, curriculum,
  * pricing, subscription modal, testimonials, FAQs, and WhatsApp messages.
  */
 
 window.TRANSLATIONS = {
     es: {
-        // Navigation
-        nav3D: "Mushaf 3D",
-        navAudio: "Estudio de Recitación",
+        // Navigation (Clean, concise, and spacious)
+        navOverview: "Inicio",
+        nav3D: "Inicio",
+        navAudio: "Recitación",
         navTeacher: "El Maestro",
-        navSyllabus: "Plan de Estudios",
-        navPricing: "Suscripción ($100/mes)",
-        navFAQ: "Preguntas Frecuentes",
-        btnSubscribeNav: "Inscribirme · $100/mes",
+        navSyllabus: "Temario",
+        navPricing: "Precios",
+        navFAQ: "FAQ",
+        btnSubscribeNav: "Inscribirme",
 
         // Hero
         heroPill: "Matrícula Abierta · Plazas Limitadas",
@@ -30,14 +31,14 @@ window.TRANSLATIONS = {
         trustReach: "España, Latam y EE.UU.",
         trustSupport: "Soporte por WhatsApp",
 
-        // 3D Viewport
-        badge3D: "Mushaf 3D Interactivo",
-        hint3D: "Arrastra para rotar en 360°",
-        edition3D: "Edición Dorada",
-        btnViewClosed: "Ver Libro Cerrado",
-        btnViewOpen: "Abrir Corán (Al-Fātiḥah)",
-        btnResetView: "Centrar Ángulo",
-        standLabel: "Rihl tallado & caligrafía",
+        // Modern Hero Interactive Showcase
+        heroCardBadge: "Recitación en Vivo & Tajweed",
+        heroCardSurah: "Surah Al-Fātiḥah",
+        heroCardHint: "Toca cualquier aleya para escuchar la pronunciación y Tajweed",
+        heroPlayFull: "Escuchar Completa",
+        heroPause: "Pausar",
+        heroTabFatihah: "Al-Fātiḥah",
+        heroTabKursi: "Ayat Al-Kursī",
 
         // Stats Bar
         stat1Num: "1 a 1",
@@ -254,14 +255,15 @@ window.TRANSLATIONS = {
     },
 
     en: {
-        // Navigation
-        nav3D: "3D Mushaf",
-        navAudio: "Recitation Studio",
+        // Navigation (Clean, concise, and spacious)
+        navOverview: "Overview",
+        nav3D: "Overview",
+        navAudio: "Recitation",
         navTeacher: "The Teacher",
         navSyllabus: "Curriculum",
-        navPricing: "Subscription ($100/mo)",
+        navPricing: "Tuition",
         navFAQ: "FAQ",
-        btnSubscribeNav: "Enroll · $100/mo",
+        btnSubscribeNav: "Enroll Now",
 
         // Hero
         heroPill: "Enrollment Open · Limited Spots",
@@ -278,14 +280,14 @@ window.TRANSLATIONS = {
         trustReach: "Spain, Americas & Worldwide",
         trustSupport: "Direct WhatsApp Support",
 
-        // 3D Viewport
-        badge3D: "Interactive 3D Mushaf",
-        hint3D: "Drag to rotate 360°",
-        edition3D: "Golden Illuminated Edition",
-        btnViewClosed: "View Closed Book",
-        btnViewOpen: "Open Quran (Al-Fātiḥah)",
-        btnResetView: "Reset Angle",
-        standLabel: "Carved Wooden Rihl & Calligraphy",
+        // Modern Hero Interactive Showcase
+        heroCardBadge: "Live Recitation & Tajweed",
+        heroCardSurah: "Surah Al-Fātiḥah",
+        heroCardHint: "Click any verse to listen to pronunciation & Tajweed notes",
+        heroPlayFull: "Play Full Surah",
+        heroPause: "Pause",
+        heroTabFatihah: "Al-Fātiḥah",
+        heroTabKursi: "Ayat Al-Kursī",
 
         // Stats Bar
         stat1Num: "1-on-1",
@@ -534,16 +536,14 @@ window.setLanguage = function(lang) {
     document.querySelectorAll('.lang-btn').forEach(btn => {
         const btnLang = btn.getAttribute('data-lang');
         if (btnLang === lang) {
-            btn.classList.add('bg-amber-400', 'text-emerald-950', 'font-bold');
-            btn.classList.remove('text-emerald-300', 'hover:text-white');
+            btn.classList.add('bg-amber-400', 'text-slate-950', 'font-bold');
+            btn.classList.remove('text-slate-400', 'hover:text-white');
         } else {
-            btn.classList.remove('bg-amber-400', 'text-emerald-950', 'font-bold');
-            btn.classList.add('text-emerald-300', 'hover:text-white');
+            btn.classList.remove('bg-amber-400', 'text-slate-950', 'font-bold');
+            btn.classList.add('text-slate-400', 'hover:text-white');
         }
     });
 
     // Update HTML lang attribute
     document.documentElement.setAttribute('lang', lang);
-
-    console.log(`Language switched to: ${lang}`);
 };

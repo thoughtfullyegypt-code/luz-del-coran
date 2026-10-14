@@ -137,6 +137,57 @@ const quranPlaylists = [
         ]
     },
     {
+        id: 'kursi',
+        surahNumber: '002',
+        titleAr: 'آيَةُ الكُرْسِيّ',
+        titleEs: 'Ayat Al-Kursī (El Trono)',
+        titleEn: 'Ayat Al-Kursī (The Throne Verse)',
+        descEs: 'El versículo más grandioso de todo el Sagrado Corán (Surah Al-Baqarah 2:255).',
+        descEn: 'The greatest and most majestic verse in the entire Holy Quran (Surah Al-Baqarah 2:255).',
+        verses: [
+            {
+                number: 1,
+                ar: 'اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ',
+                phonetic: 'Allāhu lā ilāha illā Huwa Al-Hayyu Al-Qayyūm, lā ta’khudhuhu sinatun walā nawm',
+                es: '¡Dios! No hay más divinidad que Él, el Viviente, el Subsistente. Ni la somnolencia ni el sueño se apoderan de Él.',
+                en: 'God! There is no deity except Him, the Ever-Living, the Sustainer of all existence. Neither drowsiness overtakes Him nor sleep.',
+                tajweedEs: 'Madd Munfasil (4-5 tiempos) en "lā ilāha". Shaddah con fuerza en "Al-Qayyūm". Idgham con Ghunnah en "sinatun walā".',
+                tajweedEn: 'Madd Munfasil (4-5 counts) on "lā ilāha". Emphatic Shaddah on "Al-Qayyūm". Idgham with Ghunnah on "sinatun walā".',
+                audioSrc: 'https://everyayah.com/data/Alafasy_128kbps/002255.mp3'
+            },
+            {
+                number: 2,
+                ar: 'لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ',
+                phonetic: 'Lahu mā fīs-samāwāti wamā fīl-ard, man dhal-ladhī yashfa‘u ‘indahu illā bi-idhnihi',
+                es: 'Suyo es cuanto hay en los cielos y en la tierra. ¿Quién podrá interceder ante Él sin Su permiso?',
+                en: 'To Him belongs whatever is in the heavens and whatever is on the earth. Who is it that can intercede with Him except by His permission?',
+                tajweedEs: 'Ikhfaa suave de la Nun en "Man dha" y "‘indahu".',
+                tajweedEn: 'Gentle Ikhfaa nasal hum on the Nun in "Man dha" and "‘indahu".',
+                audioSrc: 'https://everyayah.com/data/Alafasy_128kbps/002255.mp3'
+            },
+            {
+                number: 3,
+                ar: 'يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ',
+                phonetic: 'Ya‘lamu mā bayna aydīhim wamā khalfahum, walā yuhītūna bi-shay’im-min ‘ilmihi illā bimā shā’a',
+                es: 'Conoce lo que hay ante ellos y lo que hay tras ellos. Y no abarcan nada de Su conocimiento excepto lo que Él quiere.',
+                en: 'He knows what is before them and what will be after them, and they encompass not a thing of His knowledge except for what He wills.',
+                tajweedEs: 'Madd Muttasil obligatorio (4 a 5 tiempos) en la palabra "shā’a".',
+                tajweedEn: 'Mandatory Madd Muttasil (4 to 5 counts) on the word "shā’a".',
+                audioSrc: 'https://everyayah.com/data/Alafasy_128kbps/002255.mp3'
+            },
+            {
+                number: 4,
+                ar: 'وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ',
+                phonetic: 'Wasi‘a kursiyyuhu as-samāwāti wal-ard, walā ya’ūduhu hifdhuhumā, wa-Huwa Al-‘Aliyyu Al-‘Adhīm',
+                es: 'Su Trono abarca los cielos y la tierra, y Su custodia no le abruma. Él es el Altísimo, el Grandioso.',
+                en: 'His Kursi extends over the heavens and the earth, and their preservation tires Him not. And He is the Most High, the Most Great.',
+                tajweedEs: 'Madd ‘Arid li-Sukoon al detenerse en "Al-‘Adhīm" con la letra "Dhaa" (ظ) enfática.',
+                tajweedEn: 'Madd ‘Arid li-Sukoon upon pausing on "Al-‘Adhīm" with the emphatic "Dhaa" (ظ).',
+                audioSrc: 'https://everyayah.com/data/Alafasy_128kbps/002255.mp3'
+            }
+        ]
+    },
+    {
         id: 'falaq',
         surahNumber: '113',
         titleAr: 'سُورَةُ الفَلَق',
