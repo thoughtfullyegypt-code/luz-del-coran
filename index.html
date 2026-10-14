@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luz del Corán / Light of the Quran | Academia de Corán y Tajweed en Español & English</title>
+    <meta name="description" content="Aprende a leer y recitar el Sagrado Corán desde cero con un profesor nativo y clases particulares en vivo 1 a 1 adaptadas a hispanohablantes y angloparlantes. Suscripción mensual de $100 (2 sesiones semanales de 1 hora).">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        quran: {
+                            emerald: '#06261a',
+                            emeraldDark: '#03140e',
+                            emeraldLight: '#0d4633',
+                            gold: '#d4af37',
+                            goldLight: '#fceda2',
+                            goldDark: '#aa8222',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        arabic: ['"Amiri"', '"Scheherazade New"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="text-gray-100 islamic-pattern-bg relative antialiased selection:bg-amber-400 selection:text-emerald-950">
+
+    <!-- Ambient Glow Orbs -->
+    <div class="noor-ambient-light -top-20 left-1/2 -translate-x-1/2"></div>
+    <div class="noor-ambient-light top-[40%] -left-32 opacity-40"></div>
+    <div class="noor-ambient-light top-[75%] -right-32 opacity-40"></div>
+
+    <!-- Arabesque Texture Overlay -->
+    <div class="arabesque-overlay"></div>
+
+    <!-- ==================== HEADER ==================== -->
+    <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-400 via-amber-300 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 ring-2 ring-amber-400/40 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-moon text-emerald-950 text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-xl sm:text-2xl font-bold font-serif tracking-tight text-white flex items-center gap-2">
+                        Luz del Corán
+                        <span class="text-[10px] uppercase font-sans font-extrabold px-2 py-0.5 rounded-full bg-emerald-800/80 text-amber-300 border border-emerald-600/40">1 a 1</span>
+                    </span>
+                    <span class="text-[11px] block text-emerald-300/80 tracking-widest uppercase font-semibold">ESPAÑOL & ENGLISH ACADEMY</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-emerald-100/90">
+                <a href="#experiencia-3d" data-i18n="nav3D" class="hover:text-amber-300 transition-colors">Mushaf 3D</a>
+                <a href="#audio-estudio" data-i18n="navAudio" class="hover:text-amber-300 transition-colors">Estudio de Recitación</a>
+                <a href="#metodo" data-i18n="navTeacher" class="hover:text-amber-300 transition-colors">El Maestro</a>
+                <a href="#temario" data-i18n="navSyllabus" class="hover:text-amber-300 transition-colors">Plan de Estudios</a>
+                <a href="#suscripcion" data-i18n="navPricing" class="hover:text-amber-300 transition-colors">Suscripción ($100/mes)</a>
+                <a href="#faq" data-i18n="navFAQ" class="hover:text-amber-300 transition-colors">Preguntas Frecuentes</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3">
+                <!-- Bilingual Language Switcher -->
+                <div class="flex items-center bg-emerald-950/90 border border-emerald-700/60 rounded-xl p-1 text-xs shadow-inner">
+                    <button class="lang-btn px-2.5 py-1 rounded-lg text-xs transition-all bg-amber-400 text-emerald-950 font-bold" data-lang="es" title="Cambiar a Español">
+                        🇪🇸 ES
+                    </button>
+                    <button class="lang-btn px-2.5 py-1 rounded-lg text-xs transition-all text-emerald-300 hover:text-white" data-lang="en" title="Switch to English">
+                        🇺🇸 EN
+                    </button>
+                </div>
+
+                <button data-open-subscribe class="btn-gold-shimmer font-bold text-xs sm:text-sm py-2.5 px-4 sm:px-5 rounded-xl flex items-center gap-2 shadow-md">
+                    <i class="fa-solid fa-sparkles text-xs"></i>
+                    <span data-i18n="btnSubscribeNav">Inscribirme · $100/mes</span>
+                </button>
+
+                <!-- Mobile Menu Hamburger -->
+                <button id="mobile-menu-btn" class="md:hidden w-10 h-10 rounded-xl bg-emerald-900/60 border border-emerald-700/50 flex items-center justify-center text-amber-300">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-header border-b border-emerald-800/50 px-6 py-5 space-y-4 text-base">
+            <div class="flex items-center justify-between pb-3 border-b border-emerald-800/50">
+                <span class="text-xs uppercase tracking-wider text-emerald-300 font-bold">Idioma / Language</span>
+                <div class="flex items-center bg-emerald-950/90 border border-emerald-700/60 rounded-xl p-1 text-xs">
+                    <button class="lang-btn px-3 py-1 rounded-lg text-xs transition-all bg-amber-400 text-emerald-950 font-bold" data-lang="es">🇪🇸 ES</button>
+                    <button class="lang-btn px-3 py-1 rounded-lg text-xs transition-all text-emerald-300 hover:text-white" data-lang="en">🇺🇸 EN</button>
+                </div>
+            </div>
+            <a href="#experiencia-3d" data-i18n="nav3D" class="block text-emerald-200 hover:text-amber-300">Mushaf 3D Interactivo</a>
+            <a href="#audio-estudio" data-i18n="navAudio" class="block text-emerald-200 hover:text-amber-300">Estudio de Audio y Fonética</a>
+            <a href="#metodo" data-i18n="navTeacher" class="block text-emerald-200 hover:text-amber-300">Conoce al Maestro</a>
+            <a href="#temario" data-i18n="navSyllabus" class="block text-emerald-200 hover:text-amber-300">Ruta de Aprendizaje</a>
+            <a href="#suscripcion" data-i18n="navPricing" class="block text-amber-300 font-bold">Suscripción Mensual ($100/mes)</a>
+            <a href="#faq" data-i18n="navFAQ" class="block text-emerald-200 hover:text-amber-300">Preguntas Frecuentes</a>
+        </div>
+    </header>
+
+    <!-- ==================== HERO SECTION WITH 3D QURAN ==================== -->
+    <section id="experiencia-3d" class="relative pt-32 pb-20 lg:pt-36 lg:pb-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Copy & Value Proposition -->
+                <div class="lg:col-span-6 space-y-6 text-center lg:text-left z-10">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/70 border border-amber-400/40 text-amber-300 text-xs font-semibold uppercase tracking-wider shadow-inner">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        <span data-i18n="heroPill">Matrícula Abierta · Plazas Limitadas</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white leading-tight">
+                        <span data-i18n="heroTitleStart">Aprende el </span>
+                        <span class="text-gold-gradient" data-i18n="heroTitleHighlight">Sagrado Corán</span>
+                        <span data-i18n="heroTitleEnd"> desde cero y a tu propio ritmo</span>
+                    </h1>
+
+                    <p data-i18n="heroSubtitle" class="text-base sm:text-lg text-emerald-100/85 max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Clases particulares en vivo <strong>1 a 1 guiadas por el Ustadz</strong>, diseñadas con paciencia y una metodología fonética creada especialmente para la comunidad hispanohablante y angloparlante.
+                    </p>
+
+                    <!-- Key highlights Pills -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+                        <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-950/70 border border-emerald-700/50 text-xs text-emerald-200">
+                            <i class="fa-solid fa-check-circle text-amber-400"></i>
+                            <span data-i18n="pillSessions">2 Sesiones semanales de 1 hora</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-950/70 border border-emerald-700/50 text-xs text-emerald-200">
+                            <i class="fa-solid fa-video text-amber-400"></i>
+                            <span data-i18n="pillPlatform">En vivo por Zoom / Meet</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-950/70 border border-emerald-700/50 text-xs text-emerald-200">
+                            <i class="fa-solid fa-tag text-amber-400"></i>
+                            <span data-i18n="pillPrice" class="font-bold text-white">$100 USD / mes</span>
+                        </div>
+                    </div>
+
+                    <!-- Hero Call to Action Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <button data-open-subscribe class="w-full sm:w-auto btn-gold-shimmer font-bold text-base py-4 px-8 rounded-2xl flex items-center justify-center gap-3 shadow-xl">
+                            <i class="fa-solid fa-graduation-cap text-lg"></i>
+                            <span data-i18n="btnHeroEnroll">Inscribirme Ahora · $100/mes</span>
+                        </button>
+                        <a href="#diagnostico" class="w-full sm:w-auto px-6 py-4 rounded-2xl bg-emerald-900/60 hover:bg-emerald-800/80 text-emerald-200 hover:text-white font-semibold text-sm border border-emerald-700/60 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i>
+                            <span data-i18n="btnHeroDiagnosis">Clase de Diagnóstico Gratuita</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust indicators -->
+                    <div class="pt-4 flex items-center justify-center lg:justify-start gap-6 text-xs text-emerald-300/80">
+                        <div class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-shield-halved text-amber-400"></i>
+                            <span data-i18n="trustSatisfaction">Garantía de satisfacción</span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-earth-americas text-amber-400"></i>
+                            <span data-i18n="trustReach">España, Latam y EE.UU.</span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-comments text-amber-400"></i>
+                            <span data-i18n="trustSupport">Soporte por WhatsApp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive 3D Quran Viewport -->
+                <div class="lg:col-span-6 relative z-10">
+                    <div class="relative glass-card rounded-3xl p-4 sm:p-6 shadow-2xl overflow-hidden border border-amber-400/30">
+                        
+                        <!-- 3D Header & State Pill -->
+                        <div class="flex items-center justify-between mb-3 px-2">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
+                                <span data-i18n="badge3D" class="text-xs uppercase font-extrabold tracking-wider text-amber-300">Mushaf 3D Interactivo</span>
+                            </div>
+                            <span class="text-[11px] text-emerald-300/80 flex items-center gap-1">
+                                <i class="fa-solid fa-hand-pointer text-amber-400"></i> <span data-i18n="hint3D">Arrastra para rotar en 360°</span>
+                            </span>
+                        </div>
+
+                        <!-- 3D Canvas Container -->
+                        <div id="quran-3d-canvas-container" class="rounded-2xl bg-gradient-to-b from-emerald-950/80 to-[#02100a] border border-emerald-800/40 relative">
+                            <!-- Overlay badge inside 3D canvas -->
+                            <div class="absolute bottom-4 left-4 z-20 pointer-events-none bg-emerald-950/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-amber-500/20 text-[11px] text-emerald-200">
+                                <span class="font-serif italic text-amber-300 font-bold">Al-Fātiḥah & Ayat Al-Kursī</span> · <span data-i18n="edition3D">Edición Dorada</span>
+                            </div>
+                        </div>
+
+                        <!-- 3D Scene Controls Bar -->
+                        <div class="mt-4 pt-3 border-t border-emerald-800/40 flex flex-wrap items-center justify-between gap-3 text-xs">
+                            <div class="flex items-center gap-2">
+                                <button id="btn-toggle-3d-book" class="px-3.5 py-2 rounded-xl bg-emerald-900/80 hover:bg-emerald-800 text-emerald-200 hover:text-white border border-emerald-700/60 font-medium flex items-center gap-2 transition-all">
+                                    <i class="fa-solid fa-book text-amber-400"></i>
+                                    <span data-i18n="btnViewClosed">Ver Libro Cerrado</span>
+                                </button>
+                                <button id="btn-reset-3d-view" class="px-3.5 py-2 rounded-xl bg-emerald-900/80 hover:bg-emerald-800 text-emerald-200 hover:text-white border border-emerald-700/60 font-medium flex items-center gap-2 transition-all">
+                                    <i class="fa-solid fa-rotate text-amber-400"></i>
+                                    <span data-i18n="btnResetView">Centrar Ángulo</span>
+                                </button>
+                            </div>
+                            <span class="text-[11px] text-amber-300/90 font-mono">
+                                <i class="fa-solid fa-lightbulb text-amber-400"></i> <span data-i18n="standLabel">Rihl tallado & caligrafía</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== HIGHLIGHT STATS BAR ==================== -->
+    <section class="py-10 border-y border-emerald-800/40 bg-emerald-950/40 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4">
+                    <p data-i18n="stat1Num" class="text-3xl sm:text-4xl font-serif font-bold text-amber-300 mb-1">1 a 1</p>
+                    <p data-i18n="stat1Label" class="text-xs uppercase font-semibold tracking-wider text-emerald-200/80">Atención Personalizada</p>
+                </div>
+                <div class="p-4 border-l border-emerald-800/40">
+                    <p data-i18n="stat2Num" class="text-3xl sm:text-4xl font-serif font-bold text-amber-300 mb-1">2 h / sem</p>
+                    <p data-i18n="stat2Label" class="text-xs uppercase font-semibold tracking-wider text-emerald-200/80">2 Sesiones de 1 hora semanales</p>
+                </div>
+                <div class="p-4 border-l border-emerald-800/40">
+                    <p data-i18n="stat3Num" class="text-3xl sm:text-4xl font-serif font-bold text-amber-300 mb-1">$100</p>
+                    <p data-i18n="stat3Label" class="text-xs uppercase font-semibold tracking-wider text-emerald-200/80">USD / mes (Tarifa plana)</p>
+                </div>
+                <div class="p-4 border-l border-emerald-800/40">
+                    <p data-i18n="stat4Num" class="text-3xl sm:text-4xl font-serif font-bold text-amber-300 mb-1">Bilingüe</p>
+                    <p data-i18n="stat4Label" class="text-xs uppercase font-semibold tracking-wider text-emerald-200/80">Enseñanza en Español e Inglés</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== INTERACTIVE AUDIO RECITATION & TAJWEED STUDIO ==================== -->
+    <section id="audio-estudio" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+                <span data-i18n="audioBadge" class="islamic-badge">Estudio de Recitación y Fonética</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white">
+                    <span data-i18n="audioTitle">Escucha, Pronuncia y Domina el </span>
+                    <span class="text-gold-gradient" data-i18n="audioTitleHighlight">Tajweed</span>
+                </h2>
+                <p data-i18n="audioSubtitle" class="text-emerald-100/80 text-sm sm:text-base leading-relaxed">
+                    Experimenta cómo se descomponen los versículos en nuestras clases: caligrafía original, transliteración fonética guiada, y traducción clara.
+                </p>
+            </div>
+
+            <!-- Surah Selector Tabs -->
+            <div id="audio-surah-tabs" class="flex flex-wrap items-center justify-center gap-2 mb-8">
+                <!-- Dynamically populated by audio-player.js -->
+            </div>
+
+            <!-- Main Audio Player Console -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-2xl border border-amber-400/30 max-w-5xl mx-auto">
+                
+                <!-- Player Header Information -->
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 border-b border-emerald-800/50 pb-6 mb-6">
+                    <div class="text-center md:text-left">
+                        <span id="player-surah-es" class="text-xl sm:text-2xl font-serif font-bold text-white block">Surah Al-Fātiḥah</span>
+                        <p id="player-surah-desc" class="text-xs sm:text-sm text-emerald-300/80">La base de todo rezo musulmán. Las 7 aleyas fundamentales.</p>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <!-- Playback Speed Toggle -->
+                        <div class="flex items-center gap-1.5 bg-emerald-950/80 px-3 py-1.5 rounded-xl border border-emerald-700/50 text-xs">
+                            <span data-i18n="speedLabel" class="text-emerald-300">Velocidad:</span>
+                            <button id="btn-playback-speed" class="font-mono font-bold text-amber-300 hover:text-white transition-colors">1.0x</button>
+                        </div>
+
+                        <!-- Surah Arabic Title in Calligraphy -->
+                        <span id="player-surah-ar" class="text-2xl sm:text-3xl font-arabic text-amber-300" dir="rtl">سُورَةُ الفَاتِحَة</span>
+                    </div>
+                </div>
+
+                <!-- Transport Controls -->
+                <div class="bg-emerald-950/90 rounded-2xl p-4 sm:p-5 border border-emerald-800/60 mb-8">
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-emerald-900/60 rounded-full h-2 mb-3 cursor-pointer overflow-hidden">
+                        <div id="player-progress-bar" class="bg-gradient-to-r from-amber-400 to-amber-300 h-full w-0 transition-all duration-150"></div>
+                    </div>
+
+                    <div class="flex items-center justify-between text-xs text-emerald-300 font-mono mb-4">
+                        <span id="player-current-time">0:00</span>
+                        <span data-i18n="reciterLabel" class="text-[11px] text-amber-300/80 uppercase font-sans font-semibold">
+                            <i class="fa-solid fa-headphones mr-1"></i> Recitación de Sheikh Mishary Rashid Al-Afasy
+                        </span>
+                        <span id="player-total-time">0:00</span>
+                    </div>
+
+                    <div class="flex items-center justify-center gap-5">
+                        <button id="btn-prev-verse" class="w-10 h-10 rounded-full bg-emerald-900/80 hover:bg-emerald-800 text-emerald-200 hover:text-white flex items-center justify-center transition-colors" title="Versículo anterior">
+                            <i class="fa-solid fa-backward-step"></i>
+                        </button>
+
+                        <button id="btn-play-pause" class="w-14 h-14 rounded-full btn-gold-shimmer flex items-center justify-center shadow-lg shadow-amber-500/20 text-emerald-950" title="Reproducir / Pausar">
+                            <i class="fa-solid fa-play text-xl ml-0.5"></i>
+                        </button>
+
+                        <button id="btn-next-verse" class="w-10 h-10 rounded-full bg-emerald-900/80 hover:bg-emerald-800 text-emerald-200 hover:text-white flex items-center justify-center transition-colors" title="Siguiente versículo">
+                            <i class="fa-solid fa-forward-step"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Verse Breakdown List -->
+                <div id="player-verse-list" class="space-y-4 max-h-[500px] overflow-y-auto pr-2">
+                    <!-- Populated dynamically by audio-player.js -->
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT THE TEACHER (EL MAESTRO) ==================== -->
+    <section id="metodo" class="py-24 bg-emerald-950/30 border-y border-emerald-800/40 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Teacher Portrait / Card -->
+                <div class="lg:col-span-5">
+                    <div class="relative glass-card rounded-3xl p-6 sm:p-8 border border-amber-400/40 shadow-2xl text-center">
+                        <div class="w-32 h-32 sm:w-40 sm:h-40 mx-auto rounded-full bg-gradient-to-br from-amber-400/30 to-emerald-800/40 border-4 border-amber-400 p-1.5 mb-5 shadow-xl relative">
+                            <div class="w-full h-full rounded-full bg-emerald-950 flex items-center justify-center text-4xl sm:text-5xl text-amber-300">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <span class="absolute bottom-1 right-1 w-6 h-6 rounded-full bg-emerald-500 border-2 border-emerald-950 flex items-center justify-center text-white text-[10px]" title="Disponible para nuevos alumnos">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                        </div>
+
+                        <span data-i18n="teacherBadge" class="islamic-badge mb-2 inline-block">Profesor Titular</span>
+                        <h3 data-i18n="teacherTitle" class="text-2xl font-serif font-bold text-white mb-1">El Ustadz (Maestro)</h3>
+                        <p data-i18n="teacherRole" class="text-xs text-amber-300 font-semibold mb-4">Especialista en Pedagogía Coránica para Hispanos y Angloparlantes</p>
+
+                        <div class="bg-emerald-950/70 rounded-2xl p-4 text-left space-y-2 text-xs text-emerald-200/90 border border-emerald-800/50 mb-6">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-certificate text-amber-400"></i>
+                                <span data-i18n="teacherFeature1">Certificación tradicional en lectura y reglas de Tajweed</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-heart text-amber-400"></i>
+                                <span data-i18n="teacherFeature2">Paciencia infinita con principiantes y nuevos musulmanes</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-language text-amber-400"></i>
+                                <span data-i18n="teacherFeature3">Enseñanza bilingüe y comprensible (Español & English)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-clock text-amber-400"></i>
+                                <span data-i18n="teacherFeature4">Horarios adaptados según tu país y zona horaria</span>
+                            </div>
+                        </div>
+
+                        <a href="https://wa.me/34600000000?text=Hola%20Ustadz,%20quisiera%20conocer%20m%C3%A1s%20sobre%20tus%20clases%20de%20Cor%C3%A1n" target="_blank" class="w-full py-3 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white font-semibold text-xs flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-brands fa-whatsapp text-green-400 text-base"></i>
+                            <span data-i18n="btnTeacherWA">Enviar mensaje directo al Maestro</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Teacher Bio & Philosophy -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span data-i18n="philosophyBadge" class="islamic-badge">Método y Calidez Humana</span>
+                    <h2 data-i18n="philosophyHeading" class="text-3xl sm:text-4xl font-serif font-bold text-white leading-tight">
+                        Aprender el Corán no debe ser difícil ni intimidante
+                    </h2>
+
+                    <p data-i18n="philosophyP1" class="text-emerald-100/90 text-sm sm:text-base leading-relaxed">
+                        Muchos alumnos sienten frustración al intentar aprender árabe a través de aplicaciones frías o videos pregrabados donde nadie corrige su posición de la lengua o la respiración.
+                    </p>
+
+                    <p data-i18n="philosophyP2" class="text-emerald-100/85 text-sm sm:text-base leading-relaxed">
+                        En <strong>Luz del Corán</strong>, cada clase es un espacio íntimo y respetuoso. El Maestro trabaja contigo letra por letra, celebrando cada logro y asegurando que disfrutes de la dulzura espiritual de recitar las palabras de Dios con exactitud.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-2xl bg-emerald-950/60 border border-emerald-800/40">
+                            <div class="w-9 h-9 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center mb-2 text-base">
+                                <i class="fa-solid fa-microphone-lines"></i>
+                            </div>
+                            <h4 data-i18n="feat1Title" class="font-bold text-sm text-white mb-1">Corrección Fonética Inmediata</h4>
+                            <p data-i18n="feat1Desc" class="text-xs text-emerald-200/80">Aprende los puntos exactos de articulación (Makhārij) sin confundir las letras difíciles.</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-emerald-950/60 border border-emerald-800/40">
+                            <div class="w-9 h-9 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center mb-2 text-base">
+                                <i class="fa-solid fa-mobile-screen"></i>
+                            </div>
+                            <h4 data-i18n="feat2Title" class="font-bold text-sm text-white mb-1">Tutoría Continua en WhatsApp</h4>
+                            <p data-i18n="feat2Desc" class="text-xs text-emerald-200/80">Envía tus notas de voz de práctica entre clases y recibe feedback continuo del Maestro.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CURRICULUM / LEARNING ROADMAP ==================== -->
+    <section id="temario" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+                <span data-i18n="syllabusBadge" class="islamic-badge">Ruta del Alumno</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white">
+                    <span data-i18n="syllabusHeading">Un Camino Claro desde tu </span>
+                    <span class="text-gold-gradient" data-i18n="syllabusHeadingHighlight">Primera Letra</span>
+                    <span data-i18n="syllabusHeadingEnd"> hasta la Recitación Fluida</span>
+                </h2>
+                <p data-i18n="syllabusSubtitle" class="text-emerald-100/80 text-sm sm:text-base leading-relaxed">
+                    Tanto si nunca has visto el alfabeto árabe como si ya lees pero deseas perfeccionar tu Tajweed, el programa se personaliza según tu punto de partida.
+                </p>
+            </div>
+
+            <!-- Level Selector Tabs -->
+            <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
+                <button data-target="level-1" class="syllabus-tab-btn bg-amber-400 text-emerald-950 font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg transition-all flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-full bg-emerald-950 text-amber-300 flex items-center justify-center text-xs">1</span>
+                    <span data-i18n="tabLevel1">Nivel 1: Alifato y Fonética</span>
+                </button>
+                <button data-target="level-2" class="syllabus-tab-btn bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 font-semibold px-5 py-2.5 rounded-xl text-xs sm:text-sm border border-emerald-800/40 transition-all flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-full bg-emerald-800 text-emerald-200 flex items-center justify-center text-xs">2</span>
+                    <span data-i18n="tabLevel2">Nivel 2: Reglas de Tajweed</span>
+                </button>
+                <button data-target="level-3" class="syllabus-tab-btn bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 font-semibold px-5 py-2.5 rounded-xl text-xs sm:text-sm border border-emerald-800/40 transition-all flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-full bg-emerald-800 text-emerald-200 flex items-center justify-center text-xs">3</span>
+                    <span data-i18n="tabLevel3">Nivel 3: Juz Amma y Fluidez</span>
+                </button>
+                <button data-target="level-4" class="syllabus-tab-btn bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 font-semibold px-5 py-2.5 rounded-xl text-xs sm:text-sm border border-emerald-800/40 transition-all flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-full bg-emerald-800 text-emerald-200 flex items-center justify-center text-xs">4</span>
+                    <span data-i18n="tabLevel4">Nivel 4: Hifz y Comprensión</span>
+                </button>
+            </div>
+
+            <!-- Level 1 Card -->
+            <div id="level-1" class="syllabus-content-card glass-card rounded-3xl p-8 max-w-4xl mx-auto border border-amber-400/30">
+                <div class="flex items-center justify-between border-b border-emerald-800/40 pb-4 mb-6">
+                    <div>
+                        <span data-i18n="l1Sub" class="text-xs uppercase font-bold text-amber-400 tracking-wider">Fundamentos de Lectura</span>
+                        <h3 data-i18n="l1Title" class="text-2xl font-serif font-bold text-white">Nivel 1: El Alfabeto Árabe y la Pronunciación desde Cero</h3>
+                    </div>
+                    <span data-i18n="l1Tag" class="px-3 py-1 rounded-full bg-emerald-900/80 text-emerald-300 text-xs font-semibold border border-emerald-700/50">Ideal para principiantes</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-emerald-100/90 mb-6">
+                    <div class="flex items-start gap-2.5 bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-800/30">
+                        <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                        <span data-i18n="l1p1">Reconocimiento de las 28 letras en posición aislada, inicial, media y final.</span>
+                    </div>
+                    <div class="flex items-start gap-2.5 bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-800/30">
+                        <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                        <span data-i18n="l1p2">Vocales cortas (Fatha, Kasra, Damma) y vocales largas (Alif, Waw, Yaa).</span>
+                    </div>
+                    <div class="flex items-start gap-2.5 bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-800/30">
+                        <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                        <span data-i18n="l1p3">Sukoon, Shaddah y Tanween: unión de sonidos para formar palabras completas.</span>
+                    </div>
+                    <div class="flex items-start gap-2.5 bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-800/30">
+                        <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                        <span data-i18n="l1p4">Superación de sonidos difíciles (ح, خ, ص, ض, ط, ظ, ع, غ, ق).</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center pt-2">
+                    <span class="text-xs text-amber-300 font-mono"><i class="fa-solid fa-award mr-1"></i> <span data-i18n="l1Res">Resultado: Capacidad de leer cualquier palabra árabe en el Mushaf</span></span>
+                    <button data-open-subscribe data-level="principiante" data-i18n="btnSelectLevel" class="btn-gold-shimmer text-xs font-bold py-2 px-4 rounded-xl">Elegir este nivel</button>
+                </div>
+            </div>
+
+            <!-- Level 2 Card -->
+            <div id="level-2" class="syllabus-content-card glass-card rounded-3xl p-8 max-w-4xl mx-auto border border-amber-400/30 hidden">
+                <div class="flex items-center justify-between border-b border-emerald-800/40 pb-4 mb-6">
+                    <div>
+                        <span data-i18n="l2Sub" class="text-xs uppercase font-bold text-amber-400 tracking-wider">Embellecimiento y Reglas</span>
+                        <h3 data-i18n="l2Title" class="text-2xl font-serif font-bold text-white">Nivel 2: Reglas Esenciales de Tajweed</h3>
+                    </div>
+                    <span data-i18n="l2Tag" class="px-3 py-1 rounded-full bg-emerald-900/80 text-emerald-300 text-xs font-semibold border border-emerald-700/50">Nivel Intermedio</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-emerald-100/90 mb-6">
+                    <div class="flex items-start gap-2.5 bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-800/30">
+                        <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                        <span data-i18n="l2p1">Reglas de la Nun Saakinah y Tanween (Izhar, Idgham, Iqlab, Ikhfa).</span>
+                    </div>
+                    <div class="flex items-start gap-2.5 bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-800/30">
+                        <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                        <span data-i18n="l2p2">Qalqalah: el eco rítmico en las letras قطب جد.</span>
+                    </div>
+                    <div class="flex items-start gap-2.5 bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-800/30">
+                        <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                        <span data-i18n="l2p3">Reglas de los Madd (prolongaciones de 2, 4 y 6 tiempos).</span>
+                    </div>
+                    <div class="flex items-start gap-2.5 bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-800/30">
+                        <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                        <span data-i18n="l2p4">Reglas de parada (Waqf) e inicio (Ibtidaa) en los versículos.</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center pt-2">
+                    <span class="text-xs text-amber-300 font-mono"><i class="fa-solid fa-award mr-1"></i> <span data-i18n="l2Res">Resultado: Recitación correcta aplicando las reglas sin titubeos</span></span>
+                    <button data-open-subscribe data-level="tajweed" data-i18n="btnSelectLevel" class="btn-gold-shimmer text-xs font-bold py-2 px-4 rounded-xl">Elegir este nivel</button>
+                </div>
+            </div>
+
+            <!-- Level 3 Card -->
+            <div id="level-3" class="syllabus-content-card glass-card rounded-3xl p-8 max-w-4xl mx-auto border border-amber-400/30 hidden">
+                <div class="flex items-center justify-between border-b border-emerald-800/40 pb-4 mb-6">
+                    <div>
+                        <span data-i18n="l3Sub" class="text-xs uppercase font-bold text-amber-400 tracking-wider">Práctica y Perfección</span>
+                        <h3 data-i18n="l3Title" class="text-2xl font-serif font-bold text-white">Nivel 3: Juz Amma y Recitación Melódica</h3>
+                    </div>
+                    <span data-i18n="l3Tag" class="px-3 py-1 rounded-full bg-emerald-900/80 text-emerald-300 text-xs font-semibold border border-emerald-700/50">Fluidez Aplicada</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-emerald-100/90 mb-6">
+                    <div class="flex items-start gap-2.5 bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-800/30">
+                        <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                        <span data-i18n="l3p1">Recitación guiada Surah por Surah del trigésimo Juz del Corán.</span>
+                    </div>
+                    <div class="flex items-start gap-2.5 bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-800/30">
+                        <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                        <span data-i18n="l3p2">Corrección fina de tono, respiración y ritmo devocional.</span>
+                    </div>
+                    <div class="flex items-start gap-2.5 bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-800/30">
+                        <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                        <span data-i18n="l3p3">Perfeccionamiento de la recitación para los 5 rezos diarios obligatorios.</span>
+                    </div>
+                    <div class="flex items-start gap-2.5 bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-800/30">
+                        <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                        <span data-i18n="l3p4">Grabación comparativa antes/después para medir tu evolución.</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center pt-2">
+                    <span class="text-xs text-amber-300 font-mono"><i class="fa-solid fa-award mr-1"></i> <span data-i18n="l3Res">Resultado: Recitación hermosa y segura en la oración</span></span>
+                    <button data-open-subscribe data-level="tajweed" data-i18n="btnSelectLevel" class="btn-gold-shimmer text-xs font-bold py-2 px-4 rounded-xl">Elegir este nivel</button>
+                </div>
+            </div>
+
+            <!-- Level 4 Card -->
+            <div id="level-4" class="syllabus-content-card glass-card rounded-3xl p-8 max-w-4xl mx-auto border border-amber-400/30 hidden">
+                <div class="flex items-center justify-between border-b border-emerald-800/40 pb-4 mb-6">
+                    <div>
+                        <span data-i18n="l4Sub" class="text-xs uppercase font-bold text-amber-400 tracking-wider">Hifz y Conexión Espiritual</span>
+                        <h3 data-i18n="l4Title" class="text-2xl font-serif font-bold text-white">Nivel 4: Memorización y Comprensión del Mensaje</h3>
+                    </div>
+                    <span data-i18n="l4Tag" class="px-3 py-1 rounded-full bg-emerald-900/80 text-emerald-300 text-xs font-semibold border border-emerald-700/50">Avanzado</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-emerald-100/90 mb-6">
+                    <div class="flex items-start gap-2.5 bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-800/30">
+                        <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                        <span data-i18n="l4p1">Técnicas mnemotécnicas islámicas para fijar versículos en la memoria.</span>
+                    </div>
+                    <div class="flex items-start gap-2.5 bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-800/30">
+                        <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                        <span data-i18n="l4p2">Explicación breve del contexto histórico y significado (Tafseer resumido).</span>
+                    </div>
+                    <div class="flex items-start gap-2.5 bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-800/30">
+                        <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                        <span data-i18n="l4p3">Plan de repaso diario estructurado para no olvidar lo memorizado.</span>
+                    </div>
+                    <div class="flex items-start gap-2.5 bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-800/30">
+                        <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                        <span data-i18n="l4p4">Preparación para Ijazah y cadenas de transmisión tradicional.</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center pt-2">
+                    <span class="text-xs text-amber-300 font-mono"><i class="fa-solid fa-award mr-1"></i> <span data-i18n="l4Res">Resultado: Conservar las palabras sagradas en el corazón para siempre</span></span>
+                    <button data-open-subscribe data-level="hifz" data-i18n="btnSelectLevel" class="btn-gold-shimmer text-xs font-bold py-2 px-4 rounded-xl">Elegir este nivel</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== PRICING & SUBSCRIPTION SECTION ($100/MONTH) ==================== -->
+    <section id="suscripcion" class="py-24 relative overflow-hidden bg-gradient-to-b from-[#03150e] via-[#05291c] to-[#02100a] border-y border-amber-500/20">
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <span data-i18n="pricingBadge" class="islamic-badge">Plan de Suscripción Oficial</span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white">
+                    <span data-i18n="pricingHeading">Invierte en tu </span>
+                    <span class="text-gold-gradient" data-i18n="pricingHeadingHighlight">Conexión con el Corán</span>
+                </h2>
+                <p data-i18n="pricingSubtitle" class="text-emerald-100/80 text-sm sm:text-base leading-relaxed">
+                    Una tarifa mensual transparente y accesible con todo incluido: instrucción directa individual, soporte continuo y máxima flexibilidad.
+                </p>
+
+                <!-- Currency Switcher Toggle -->
+                <div class="inline-flex items-center bg-emerald-950/80 p-1.5 rounded-2xl border border-emerald-700/50 text-xs mt-3">
+                    <button class="currency-toggle-btn px-4 py-1.5 rounded-xl bg-amber-400 text-emerald-950 font-bold transition-all" data-currency="USD">
+                        USD ($)
+                    </button>
+                    <button class="currency-toggle-btn px-4 py-1.5 rounded-xl text-emerald-300 hover:text-white transition-all" data-currency="EUR">
+                        EUR (€)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Flagship Subscription Card -->
+            <div class="max-w-xl mx-auto relative">
+                
+                <!-- Glowing Golden Halo -->
+                <div class="absolute -inset-1.5 bg-gradient-to-r from-amber-400 via-yellow-200 to-amber-600 rounded-3xl blur-md opacity-40 animate-pulse"></div>
+
+                <div class="relative glass-card rounded-3xl p-8 sm:p-10 border-2 border-amber-400/80 shadow-2xl bg-gradient-to-b from-emerald-950/95 via-[#062c1e] to-emerald-950/95">
+                    
+                    <!-- Popular / Featured Banner -->
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                        <span data-i18n="planBadge" class="bg-gradient-to-r from-amber-400 to-amber-500 text-emerald-950 text-xs font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-lg">
+                            ★ El Plan Preferido por los Alumnos ★
+                        </span>
+                    </div>
+
+                    <div class="text-center pt-2 mb-8">
+                        <h3 data-i18n="planTitle" class="text-2xl font-serif font-bold text-white mb-2">Membresía Mensual "Luz del Corán"</h3>
+                        <p data-i18n="planSessionsSubtitle" class="text-xs text-emerald-200/85">2 sesiones particulares a la semana guiadas por el Ustadz</p>
+
+                        <div class="flex items-baseline justify-center gap-1.5 mt-5">
+                            <span id="pricing-currency-symbol" class="text-2xl font-bold text-amber-300">$</span>
+                            <span id="pricing-amount" class="text-6xl font-serif font-black text-white tracking-tight">100</span>
+                            <span data-i18n="pricingPerMonth" class="text-emerald-300/80 text-sm font-semibold">USD / mes</span>
+                        </div>
+                        <p id="pricing-equivalent" data-i18n="pricingPerHourUSD" class="text-xs text-amber-300/90 font-medium mt-1">
+                            Aprox. $12.50 USD por hora de clase individual
+                        </p>
+                    </div>
+
+                    <!-- Inclusions List -->
+                    <div class="space-y-3.5 mb-8 text-sm">
+                        <div class="flex items-start gap-3 text-emerald-100">
+                            <div class="w-5 h-5 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div data-i18n="inc1">
+                                <strong class="text-white">2 Sesiones semanales de 1 hora</strong> (8 horas al mes de tutoría individual en vivo).
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 text-emerald-100">
+                            <div class="w-5 h-5 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div data-i18n="inc2">
+                                <strong class="text-white">Clases 1 a 1 en directo</strong> (Zoom / Google Meet, sin distracciones grupales).
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 text-emerald-100">
+                            <div class="w-5 h-5 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div data-i18n="inc3">
+                                <strong class="text-white">Horarios flexibles a convenir</strong> adaptados a tu huso horario.
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 text-emerald-100">
+                            <div class="w-5 h-5 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div data-i18n="inc4">
+                                <strong class="text-white">Soporte continuo por WhatsApp</strong>: envía notas de voz para que el Maestro corrija tu pronunciación.
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 text-emerald-100">
+                            <div class="w-5 h-5 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div data-i18n="inc5">
+                                <strong class="text-white">Grabación en vídeo de cada clase</strong> disponible para repasar cuando quieras.
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 text-emerald-100">
+                            <div class="w-5 h-5 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div data-i18n="inc6">
+                                <strong class="text-white">Material didáctico digital gratuito</strong> (PDF de Tajweed, tablas fonéticas y audios).
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct Subscribe Button -->
+                    <button data-open-subscribe class="w-full btn-gold-shimmer font-bold text-base py-4 px-6 rounded-2xl flex items-center justify-center gap-3 shadow-xl mb-4">
+                        <i class="fa-solid fa-credit-card text-lg"></i>
+                        <span data-i18n="btnSubscribePlan">Suscribirme y Completar Datos · $100/mes</span>
+                    </button>
+
+                    <div class="text-center space-y-2">
+                        <p class="text-xs text-emerald-300/80 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-lock text-amber-400"></i>
+                            <span data-i18n="securityNotice">Pago seguro con Tarjeta o WhatsApp · Cancela cuando desees sin permanencia</span>
+                        </p>
+                        <p data-i18n="satisfactionGuarantee" class="text-[11px] text-amber-200/70 italic">
+                            «Si tras tu primera clase no estás 100% satisfecho, te reembolsamos tu cuota sin preguntas.»
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== FREE DIAGNOSTIC SESSION LEAD FORM ==================== -->
+    <section id="diagnostico" class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-3xl p-8 sm:p-10 border border-emerald-700/60 shadow-2xl relative overflow-hidden">
+                <div class="text-center max-w-2xl mx-auto mb-8 space-y-2">
+                    <span data-i18n="freeBadge" class="islamic-badge">Prueba sin Compromiso</span>
+                    <h3 data-i18n="freeHeading" class="text-2xl sm:text-3xl font-serif font-bold text-white">
+                        ¿Deseas conocer al Maestro primero?
+                    </h3>
+                    <p data-i18n="freeSubtitle" class="text-xs sm:text-sm text-emerald-200/85">
+                        Agenda una <strong>Sesión de Diagnóstico Gratuita de 20 minutos</strong>. El Ustadz evaluará tu nivel fonético y te mostrará la dinámica de clase.
+                    </p>
+                </div>
+
+                <form id="free-assessment-form" class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                    <div>
+                        <label data-i18n="labelYourName" class="block text-xs font-semibold text-emerald-300 mb-1">Tu Nombre:</label>
+                        <input id="lead-name" type="text" required placeholder="Ej. Carlos Mendoza" class="w-full bg-emerald-950/80 border border-emerald-800/80 rounded-xl px-4 py-3 text-sm text-white placeholder-emerald-700 focus:outline-none focus:border-amber-400">
+                    </div>
+                    <div>
+                        <label data-i18n="labelYourPhone" class="block text-xs font-semibold text-emerald-300 mb-1">Tu WhatsApp:</label>
+                        <input id="lead-phone" type="tel" required placeholder="+34 600 000 000" class="w-full bg-emerald-950/80 border border-emerald-800/80 rounded-xl px-4 py-3 text-sm text-white placeholder-emerald-700 focus:outline-none focus:border-amber-400">
+                    </div>
+                    <div>
+                        <label data-i18n="labelCurrentLevel" class="block text-xs font-semibold text-emerald-300 mb-1">Nivel Actual:</label>
+                        <select id="lead-level" class="w-full bg-emerald-950/80 border border-emerald-800/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400">
+                            <option value="Principiante total" data-i18n="optLevel1">Principiante (Desde cero)</option>
+                            <option value="Lectura básica" data-i18n="optLevel2">Lectura básica</option>
+                            <option value="Tajweed y entonación" data-i18n="optLevel3">Tajweed y entonación</option>
+                            <option value="Memorización" data-i18n="optLevel4">Memorización Hifz</option>
+                        </select>
+                    </div>
+
+                    <div class="sm:col-span-3 pt-2">
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-sm border border-emerald-600/50 shadow-lg flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-brands fa-whatsapp text-green-400 text-lg"></i>
+                            <span data-i18n="btnRequestDiagnostic">Solicitar Mi Diagnóstico Gratuito por WhatsApp</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== STUDENT TESTIMONIALS ==================== -->
+    <section class="py-20 bg-emerald-950/40 border-y border-emerald-800/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-14 space-y-2">
+                <span data-i18n="testimonialsBadge" class="islamic-badge">Voces de la Comunidad</span>
+                <h2 data-i18n="testimonialsHeading" class="text-3xl font-serif font-bold text-white">
+                    Lo que Dicen Nuestros Alumnos
+                </h2>
+                <p data-i18n="testimonialsSubtitle" class="text-xs sm:text-sm text-emerald-200/80">Estudiantes hispanos y angloparlantes de todo el mundo.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="glass-card rounded-2xl p-6 border border-emerald-800/40 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-xs mb-3">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p data-i18n="test1Text" class="text-xs sm:text-sm text-emerald-100/90 leading-relaxed italic mb-4">
+                            "Me convertí al Islam hace dos años y siempre me sentía cohibido de no poder leer el Corán en árabe. El Ustadz tiene una paciencia infinita y me explicó la fonética de forma que mi cerebro lo entendió de inmediato. En 3 meses ya recito Al-Fātiḥah con Tajweed."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-emerald-800/40">
+                        <div class="w-9 h-9 rounded-full bg-amber-400/20 text-amber-300 font-bold flex items-center justify-center text-xs">CM</div>
+                        <div>
+                            <span data-i18n="test1Author" class="text-xs font-bold text-white block">Carlos Morales</span>
+                            <span data-i18n="test1Location" class="text-[11px] text-emerald-400">Madrid, España</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="glass-card rounded-2xl p-6 border border-emerald-800/40 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-xs mb-3">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p data-i18n="test2Text" class="text-xs sm:text-sm text-emerald-100/90 leading-relaxed italic mb-4">
+                            "El formato de 2 sesiones semanales de 1 hora es perfecto. No satura y te da tiempo para practicar con las grabaciones que el maestro te deja. El costo de $100 al mes es sumamente justo para tener un maestro particular dedicado solo a ti."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-emerald-800/40">
+                        <div class="w-9 h-9 rounded-full bg-amber-400/20 text-amber-300 font-bold flex items-center justify-center text-xs">MR</div>
+                        <div>
+                            <span data-i18n="test2Author" class="text-xs font-bold text-white block">Mariana Reyes</span>
+                            <span data-i18n="test2Location" class="text-[11px] text-emerald-400">Ciudad de México, México</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="glass-card rounded-2xl p-6 border border-emerald-800/40 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-xs mb-3">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p data-i18n="test3Text" class="text-xs sm:text-sm text-emerald-100/90 leading-relaxed italic mb-4">
+                            "I enrolled both my 11-year-old son and myself. The bilingual flexibility is unmatched. Sending voice notes over WhatsApp during the week for instant pronunciation feedback makes all the difference."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-emerald-800/40">
+                        <div class="w-9 h-9 rounded-full bg-amber-400/20 text-amber-300 font-bold flex items-center justify-center text-xs">YS</div>
+                        <div>
+                            <span data-i18n="test3Author" class="text-xs font-bold text-white block">Yasin Silva</span>
+                            <span data-i18n="test3Location" class="text-[11px] text-emerald-400">Miami, Florida / Bogotá</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== FREQUENTLY ASKED QUESTIONS (FAQ) ==================== -->
+    <section id="faq" class="py-24 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+                <span data-i18n="faqBadge" class="islamic-badge">Resolución de Dudas</span>
+                <h2 data-i18n="faqHeading" class="text-3xl sm:text-4xl font-serif font-bold text-white">
+                    Preguntas Frecuentes
+                </h2>
+                <p data-i18n="faqSubtitle" class="text-xs sm:text-sm text-emerald-200/80">
+                    Todo lo que necesitas saber antes de comenzar tus clases de Corán.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                
+                <!-- FAQ 1 -->
+                <div class="faq-item glass-card rounded-2xl border border-emerald-800/40 overflow-hidden">
+                    <button class="faq-question w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm text-white hover:text-amber-300 transition-colors">
+                        <span data-i18n="faq1Q">¿Necesito saber algo de árabe antes de empezar?</span>
+                        <i class="faq-icon fa-solid fa-chevron-down text-xs text-amber-400 transition-transform duration-200"></i>
+                    </button>
+                    <div data-i18n="faq1A" class="faq-answer px-5 pb-5 text-xs text-emerald-100/85 leading-relaxed hidden border-t border-emerald-800/30 pt-3">
+                        No, en absoluto. La inmensa mayoría de nuestros alumnos comienzan desde cero absoluto sin saber reconocer ni una sola letra. El método fonético paso a paso te guía desde la primera sesión con total naturalidad.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item glass-card rounded-2xl border border-emerald-800/40 overflow-hidden">
+                    <button class="faq-question w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm text-white hover:text-amber-300 transition-colors">
+                        <span data-i18n="faq2Q">¿Cómo se imparten las clases y qué plataforma se utiliza?</span>
+                        <i class="faq-icon fa-solid fa-chevron-down text-xs text-amber-400 transition-transform duration-200"></i>
+                    </button>
+                    <div data-i18n="faq2A" class="faq-answer px-5 pb-5 text-xs text-emerald-100/85 leading-relaxed hidden border-t border-emerald-800/30 pt-3">
+                        Las clases son 100% en vivo por videollamada individual mediante <strong>Zoom o Google Meet</strong>. Podrás ver en pantalla el Mushaf interactivo, la pizarra virtual con los apuntes del maestro y su boca para imitar la pronunciación exacta.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item glass-card rounded-2xl border border-emerald-800/40 overflow-hidden">
+                    <button class="faq-question w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm text-white hover:text-amber-300 transition-colors">
+                        <span data-i18n="faq3Q">¿Cómo funciona el cobro de la suscripción de $100 USD al mes?</span>
+                        <i class="faq-icon fa-solid fa-chevron-down text-xs text-amber-400 transition-transform duration-200"></i>
+                    </button>
+                    <div data-i18n="faq3A" class="faq-answer px-5 pb-5 text-xs text-emerald-100/85 leading-relaxed hidden border-t border-emerald-800/30 pt-3">
+                        La suscripción de $100 USD (o 92 €) es mensual y te otorga <strong>2 sesiones de 1 hora cada semana</strong> (un total de 8 horas al mes). Se puede abonar con tarjeta de crédito/débito, PayPal o transferencia directa por WhatsApp. No hay permanencia obligatoria: puedes pausar o cancelar en cualquier momento avisando antes del siguiente ciclo.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item glass-card rounded-2xl border border-emerald-800/40 overflow-hidden">
+                    <button class="faq-question w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm text-white hover:text-amber-300 transition-colors">
+                        <span data-i18n="faq4Q">¿Qué sucede si un día no puedo asistir a mi clase programada?</span>
+                        <i class="faq-icon fa-solid fa-chevron-down text-xs text-amber-400 transition-transform duration-200"></i>
+                    </button>
+                    <div data-i18n="faq4A" class="faq-answer px-5 pb-5 text-xs text-emerald-100/85 leading-relaxed hidden border-t border-emerald-800/30 pt-3">
+                        Entendemos que surgen imprevistos laborales o familiares. Si nos avisas con al menos 24 horas de antelación, tu sesión se reprograma en otro día de la semana sin ningún costo adicional.
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq-item glass-card rounded-2xl border border-emerald-800/40 overflow-hidden">
+                    <button class="faq-question w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm text-white hover:text-amber-300 transition-colors">
+                        <span data-i18n="faq5Q">¿Las clases se pueden impartir en inglés o en español?</span>
+                        <i class="faq-icon fa-solid fa-chevron-down text-xs text-amber-400 transition-transform duration-200"></i>
+                    </button>
+                    <div data-i18n="faq5A" class="faq-answer px-5 pb-5 text-xs text-emerald-100/85 leading-relaxed hidden border-t border-emerald-800/30 pt-3">
+                        ¡Sí! El Maestro ofrece instrucción totalmente bilingüe tanto en español como en inglés, ideal para familias de habla hispana, nuevos musulmanes y comunidades bilingües en EE.UU., Reino Unido y Latinoamérica.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-[#020b08] border-t border-emerald-800/50 pt-16 pb-12 relative z-10 text-xs text-emerald-300/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-amber-400 text-emerald-950 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-moon"></i>
+                        </div>
+                        <span class="text-xl font-serif font-bold text-white">Luz del Corán / Light of the Quran</span>
+                    </div>
+                    <p data-i18n="footerDesc" class="text-xs text-emerald-200/80 max-w-sm leading-relaxed">
+                        Academia digital de recitación y Tajweed en español e inglés. Conectando a los estudiantes con la luz divina del Sagrado Corán mediante enseñanza personalizada 1 a 1.
+                    </p>
+                    <p class="font-serif italic text-amber-300/90 text-sm">
+                        «خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ»<br>
+                        <span data-i18n="hadithText" class="text-xs font-sans text-emerald-300">«El mejor de vosotros es quien aprende el Corán y lo enseña.» (Hadiz Profético)</span>
+                    </p>
+                </div>
+
+                <div>
+                    <h4 data-i18n="footerQuickLinks" class="font-bold text-white uppercase tracking-wider mb-3 text-xs">Acceso Rápido</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#experiencia-3d" data-i18n="nav3D" class="hover:text-amber-300 transition-colors">Mushaf 3D Interactivo</a></li>
+                        <li><a href="#audio-estudio" data-i18n="navAudio" class="hover:text-amber-300 transition-colors">Estudio de Recitación</a></li>
+                        <li><a href="#metodo" data-i18n="navTeacher" class="hover:text-amber-300 transition-colors">Sobre el Maestro</a></li>
+                        <li><a href="#temario" data-i18n="navSyllabus" class="hover:text-amber-300 transition-colors">Ruta de Tajweed</a></li>
+                        <li><a href="#suscripcion" data-i18n="navPricing" class="hover:text-amber-300 transition-colors">Suscripción ($100/mes)</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 data-i18n="footerSupport" class="font-bold text-white uppercase tracking-wider mb-3 text-xs">Atención al Alumno</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                            <a href="https://wa.me/34600000000" target="_blank" class="hover:text-amber-300">WhatsApp Direct</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-emerald-400"></i>
+                            <span>contacto@luzdelcoran.com</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-globe text-emerald-400"></i>
+                            <span>Spanish & English classes</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-emerald-900/60 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
+                <p data-i18n="footerCopyright">© 2026 Luz del Corán / Light of the Quran. Todos los derechos reservados.</p>
+                <div class="flex items-center gap-4">
+                    <span class="text-amber-300 font-semibold">$100 USD / mo · 2 weekly 1-hour sessions</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== FLOATING WHATSAPP BUTTON ==================== -->
+    <a href="https://wa.me/34600000000?text=Salam%20Alaykum%20Ustadz,%20estoy%20interesado%20en%20las%20clases%20de%20Cor%C3%A1n" target="_blank" class="fixed bottom-6 right-6 z-40 group flex items-center gap-2.5 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white py-3 px-4 rounded-full shadow-2xl shadow-green-500/30 transition-all transform hover:scale-105" title="WhatsApp with the Teacher">
+        <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+        </span>
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+        <span data-i18n="floatingWAPrompt" class="text-xs font-bold hidden sm:inline-block">¿Dudas? Habla con el Maestro</span>
+    </a>
+
+    <!-- ==================== SUBSCRIPTION & CHECKOUT MODAL ==================== -->
+    <div id="subscription-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+        <!-- Backdrop -->
+        <div id="sub-modal-backdrop" class="fixed inset-0 bg-black/85 backdrop-blur-md transition-opacity"></div>
+
+        <!-- Modal Dialog -->
+        <div class="relative bg-gradient-to-b from-[#06261a] via-[#041d13] to-[#02100a] border-2 border-amber-400/80 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl z-10 max-h-[90vh] overflow-y-auto">
+            
+            <!-- Close Button -->
+            <button id="btn-close-sub-modal" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 hover:text-white flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Main Content Container (replaces with success voucher upon completion) -->
+            <div id="sub-modal-content-wrapper">
+                
+                <!-- Modal Header -->
+                <div class="text-center mb-6">
+                    <span data-i18n="modalBadge" class="islamic-badge mb-1 inline-block">Inscripción Oficial</span>
+                    <h3 data-i18n="modalTitle" class="text-2xl sm:text-3xl font-serif font-bold text-white">Suscripción Mensual de Corán</h3>
+                    <p data-i18n="modalSubtitle" class="text-xs sm:text-sm text-amber-300 font-semibold mt-1">
+                        $100 USD / mes · 2 sesiones de 1 hora por semana (8h/mes)
+                    </p>
+                </div>
+
+                <!-- Multi-Step Indicators -->
+                <div class="flex items-center justify-center gap-4 sm:gap-8 mb-8 border-b border-emerald-800/40 pb-5">
+                    <div class="flex items-center gap-2">
+                        <div id="step-indicator-1" class="w-8 h-8 rounded-full bg-amber-400 text-emerald-950 flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-amber-400/20">1</div>
+                        <span id="step-text-1" data-i18n="step1Label" class="text-xs font-semibold text-amber-300">Tus Datos</span>
+                    </div>
+                    <div class="w-8 h-px bg-emerald-800"></div>
+                    <div class="flex items-center gap-2">
+                        <div id="step-indicator-2" class="w-8 h-8 rounded-full bg-emerald-900/60 text-emerald-400/60 border border-emerald-700/40 flex items-center justify-center font-bold text-sm">2</div>
+                        <span id="step-text-2" data-i18n="step2Label" class="text-xs font-medium text-emerald-500">Horarios</span>
+                    </div>
+                    <div class="w-8 h-px bg-emerald-800"></div>
+                    <div class="flex items-center gap-2">
+                        <div id="step-indicator-3" class="w-8 h-8 rounded-full bg-emerald-900/60 text-emerald-400/60 border border-emerald-700/40 flex items-center justify-center font-bold text-sm">3</div>
+                        <span id="step-text-3" data-i18n="step3Label" class="text-xs font-medium text-emerald-500">Activación</span>
+                    </div>
+                </div>
+
+                <!-- STEP 1: Student Information -->
+                <div id="sub-step-1" class="sub-step-panel space-y-4">
+                    <div>
+                        <label data-i18n="lblFullName" class="block text-xs font-semibold text-emerald-300 mb-1">Nombre Completo del Alumno *</label>
+                        <input id="input-student-name" type="text" placeholder="Ej. Carlos Alberto Mendoza / John Doe" class="w-full bg-emerald-950/90 border border-emerald-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label data-i18n="lblEmail" class="block text-xs font-semibold text-emerald-300 mb-1">Correo Electrónico *</label>
+                            <input id="input-student-email" type="email" placeholder="student@example.com" class="w-full bg-emerald-950/90 border border-emerald-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400">
+                        </div>
+
+                        <div>
+                            <label data-i18n="lblPhone" class="block text-xs font-semibold text-emerald-300 mb-1">WhatsApp con Prefijo País *</label>
+                            <div class="flex gap-2">
+                                <select id="input-country-code" class="w-28 bg-emerald-950/90 border border-emerald-800 rounded-xl px-2 py-3 text-xs text-white focus:outline-none focus:border-amber-400">
+                                    <option value="+34">🇪🇸 +34</option>
+                                    <option value="+1">🇺🇸 +1</option>
+                                    <option value="+52">🇲🇽 +52</option>
+                                    <option value="+57">🇨🇴 +57</option>
+                                    <option value="+54">🇦🇷 +54</option>
+                                    <option value="+56">🇨🇱 +56</option>
+                                    <option value="+51">🇵🇪 +51</option>
+                                    <option value="+44">🇬🇧 +44</option>
+                                    <option value="+593">🇪🇨 +593</option>
+                                    <option value="+58">🇻🇪 +58</option>
+                                </select>
+                                <input id="input-student-whatsapp" type="tel" placeholder="600 000 000" class="flex-1 bg-emerald-950/90 border border-emerald-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label data-i18n="lblTimezone" class="block text-xs font-semibold text-emerald-300 mb-1">Zona Horaria Aproximada</label>
+                            <select id="input-timezone" class="w-full bg-emerald-950/90 border border-emerald-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-400">
+                                <option value="Europe/Madrid">Spain / Europe (CET / GMT+1)</option>
+                                <option value="America/New_York">US Eastern (EST / GMT-5)</option>
+                                <option value="America/Chicago">US Central (CST / GMT-6)</option>
+                                <option value="America/Los_Angeles">US Pacific (PST / GMT-8)</option>
+                                <option value="America/Mexico_City">Mexico / Central America (GMT-6)</option>
+                                <option value="America/Bogota">Colombia / Peru / Ecuador (GMT-5)</option>
+                                <option value="America/Argentina/Buenos_Aires">Argentina / Chile (GMT-3)</option>
+                                <option value="Europe/London">UK / Western Europe (GMT+0)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label data-i18n="lblLevel" class="block text-xs font-semibold text-emerald-300 mb-1">Nivel Actual</label>
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <label class="p-2.5 rounded-xl bg-emerald-950/60 border border-emerald-800/80 flex items-center gap-2 cursor-pointer hover:border-amber-400/50">
+                                    <input type="radio" name="studentLevel" value="principiante" checked class="accent-amber-400">
+                                    <span data-i18n="optLevel1">Principiante</span>
+                                </label>
+                                <label class="p-2.5 rounded-xl bg-emerald-950/60 border border-emerald-800/80 flex items-center gap-2 cursor-pointer hover:border-amber-400/50">
+                                    <input type="radio" name="studentLevel" value="basico" class="accent-amber-400">
+                                    <span data-i18n="optLevel2">Lectura básica</span>
+                                </label>
+                                <label class="p-2.5 rounded-xl bg-emerald-950/60 border border-emerald-800/80 flex items-center gap-2 cursor-pointer hover:border-amber-400/50">
+                                    <input type="radio" name="studentLevel" value="tajweed" class="accent-amber-400">
+                                    <span data-i18n="optLevel3">Tajweed</span>
+                                </label>
+                                <label class="p-2.5 rounded-xl bg-emerald-950/60 border border-emerald-800/80 flex items-center gap-2 cursor-pointer hover:border-amber-400/50">
+                                    <input type="radio" name="studentLevel" value="hifz" class="accent-amber-400">
+                                    <span data-i18n="optLevel4">Memorización</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex justify-end">
+                        <button id="btn-step-1-next" class="btn-gold-shimmer font-bold text-sm py-3 px-8 rounded-xl flex items-center gap-2">
+                            <span data-i18n="btnNextSchedule">Siguiente: Elegir Horario</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Schedule Preferences -->
+                <div id="sub-step-2" class="sub-step-panel space-y-5 hidden">
+                    <div>
+                        <label data-i18n="lblScheduleDays" class="block text-xs font-semibold text-emerald-300 mb-2">Preferencia de días para tus 2 sesiones semanales:</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                            <label class="p-3.5 rounded-xl bg-emerald-950/80 border border-emerald-800 flex items-center gap-3 cursor-pointer hover:border-amber-400">
+                                <input type="radio" name="scheduleDays" value="lun-mie" checked class="accent-amber-400">
+                                <div>
+                                    <strong data-i18n="daysLunMie" class="text-white block">Lunes y Miércoles</strong>
+                                    <span data-i18n="oneHourEach" class="text-emerald-300/80 text-[11px]">1 hora cada día</span>
+                                </div>
+                            </label>
+
+                            <label class="p-3.5 rounded-xl bg-emerald-950/80 border border-emerald-800 flex items-center gap-3 cursor-pointer hover:border-amber-400">
+                                <input type="radio" name="scheduleDays" value="mar-jue" class="accent-amber-400">
+                                <div>
+                                    <strong data-i18n="daysMarJue" class="text-white block">Martes y Jueves</strong>
+                                    <span data-i18n="oneHourEach" class="text-emerald-300/80 text-[11px]">1 hora cada día</span>
+                                </div>
+                            </label>
+
+                            <label class="p-3.5 rounded-xl bg-emerald-950/80 border border-emerald-800 flex items-center gap-3 cursor-pointer hover:border-amber-400">
+                                <input type="radio" name="scheduleDays" value="vie-dom" class="accent-amber-400">
+                                <div>
+                                    <strong data-i18n="daysVieDom" class="text-white block">Viernes y Domingo</strong>
+                                    <span data-i18n="oneHourEach" class="text-emerald-300/80 text-[11px]">1 hora cada día</span>
+                                </div>
+                            </label>
+
+                            <label class="p-3.5 rounded-xl bg-emerald-950/80 border border-emerald-800 flex items-center gap-3 cursor-pointer hover:border-amber-400">
+                                <input type="radio" name="scheduleDays" value="flexible" class="accent-amber-400">
+                                <div>
+                                    <strong data-i18n="daysFlexible" class="text-white block">Horario Flexible</strong>
+                                    <span data-i18n="flexibleCoord" class="text-emerald-300/80 text-[11px]">A coordinar por WhatsApp</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label data-i18n="lblScheduleTime" class="block text-xs font-semibold text-emerald-300 mb-2">Franja horaria preferida:</label>
+                        <div class="grid grid-cols-3 gap-2.5 text-xs text-center">
+                            <label class="p-3 rounded-xl bg-emerald-950/80 border border-emerald-800 cursor-pointer hover:border-amber-400">
+                                <input type="radio" name="scheduleTime" value="manana" class="accent-amber-400 block mx-auto mb-1">
+                                <span data-i18n="timeMornings" class="font-bold text-white block">Mañanas</span>
+                                <span class="text-[10px] text-emerald-400">09:00 - 13:00</span>
+                            </label>
+                            <label class="p-3 rounded-xl bg-emerald-950/80 border border-emerald-800 cursor-pointer hover:border-amber-400">
+                                <input type="radio" name="scheduleTime" value="tarde" checked class="accent-amber-400 block mx-auto mb-1">
+                                <span data-i18n="timeAfternoons" class="font-bold text-white block">Tardes</span>
+                                <span class="text-[10px] text-emerald-400">14:00 - 19:00</span>
+                            </label>
+                            <label class="p-3 rounded-xl bg-emerald-950/80 border border-emerald-800 cursor-pointer hover:border-amber-400">
+                                <input type="radio" name="scheduleTime" value="noche" class="accent-amber-400 block mx-auto mb-1">
+                                <span data-i18n="timeNights" class="font-bold text-white block">Noches</span>
+                                <span class="text-[10px] text-emerald-400">20:00 - 23:00</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label data-i18n="lblNotes" class="block text-xs font-semibold text-emerald-300 mb-1">Notas o metas específicas para el Maestro (opcional):</label>
+                        <textarea id="input-student-notes" rows="2" placeholder="Ej. Wanting to learn correct recitation for my daily prayers..." class="w-full bg-emerald-950/90 border border-emerald-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400"></textarea>
+                    </div>
+
+                    <div class="pt-4 flex justify-between items-center">
+                        <button id="btn-step-2-back" class="text-xs text-emerald-300 hover:text-white font-medium flex items-center gap-1.5">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span data-i18n="btnBack">Volver</span>
+                        </button>
+                        <button id="btn-step-2-next" class="btn-gold-shimmer font-bold text-sm py-3 px-8 rounded-xl flex items-center gap-2">
+                            <span data-i18n="btnNextPay">Continuar al Pago</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Payment & Formalization -->
+                <div id="sub-step-3" class="sub-step-panel space-y-5 hidden">
+                    
+                    <!-- Order Recap Badge -->
+                    <div class="bg-emerald-950/90 border border-emerald-800/80 rounded-2xl p-4 text-xs">
+                        <div class="flex justify-between items-center border-b border-emerald-800/40 pb-2 mb-2">
+                            <span data-i18n="orderRecapTitle" class="text-emerald-300 font-bold">Resumen de Suscripción:</span>
+                            <span class="text-amber-300 font-bold">$100 USD / mes</span>
+                        </div>
+                        <div class="space-y-1 text-emerald-200/90">
+                            <p><strong><span data-i18n="receiptStudentLabel">Alumno</span>:</strong> <span id="summary-student-name">-</span> (<span id="summary-student-level">-</span>)</p>
+                            <p><strong><span data-i18n="receiptPlanLabel">Plan</span>:</strong> <span data-i18n="recapPlan">2 sesiones individuales semanales de 1 hora (8h al mes)</span></p>
+                            <p><strong><span data-i18n="step2Label">Horario</span>:</strong> <span id="summary-student-schedule">-</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method Tabs -->
+                    <div>
+                        <label data-i18n="lblPayMethod" class="block text-xs font-semibold text-emerald-300 mb-2">Selecciona cómo formalizar tu suscripción:</label>
+                        <div class="grid grid-cols-3 gap-2.5 text-xs">
+                            <label class="p-3 rounded-xl bg-emerald-950/90 border border-emerald-700/60 cursor-pointer hover:border-amber-400 flex flex-col items-center gap-1">
+                                <input type="radio" name="paymentMethod" value="card" checked class="accent-amber-400">
+                                <i class="fa-solid fa-credit-card text-amber-300 text-lg"></i>
+                                <span data-i18n="payCard" class="font-bold text-white">Tarjeta</span>
+                            </label>
+                            <label class="p-3 rounded-xl bg-emerald-950/90 border border-emerald-700/60 cursor-pointer hover:border-amber-400 flex flex-col items-center gap-1">
+                                <input type="radio" name="paymentMethod" value="paypal" class="accent-amber-400">
+                                <i class="fa-brands fa-paypal text-blue-400 text-lg"></i>
+                                <span data-i18n="payPayPal" class="font-bold text-white">PayPal</span>
+                            </label>
+                            <label class="p-3 rounded-xl bg-emerald-950/90 border border-emerald-700/60 cursor-pointer hover:border-amber-400 flex flex-col items-center gap-1">
+                                <input type="radio" name="paymentMethod" value="whatsapp" class="accent-amber-400">
+                                <i class="fa-brands fa-whatsapp text-green-400 text-lg"></i>
+                                <span data-i18n="payWhatsApp" class="font-bold text-white">WhatsApp</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Option A: Credit Card Mockup -->
+                    <div id="pay-card-section" class="space-y-3 bg-black/20 p-4 rounded-2xl border border-emerald-800/40">
+                        <div>
+                            <label data-i18n="lblCardNumber" class="block text-[11px] font-semibold text-emerald-300 mb-1">Número de Tarjeta (Stripe 256-bit SSL)</label>
+                            <div class="relative">
+                                <input id="input-card-number" type="text" placeholder="4242 4242 4242 4242" maxlength="19" class="w-full bg-emerald-950 border border-emerald-800 rounded-xl px-4 py-2.5 text-sm text-white font-mono focus:outline-none focus:border-amber-400 pr-10">
+                                <i class="fa-brands fa-cc-visa text-amber-300 absolute right-3 top-3 text-lg"></i>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label data-i18n="lblCardExp" class="block text-[11px] font-semibold text-emerald-300 mb-1">Vencimiento (MM/AA)</label>
+                                <input id="input-card-exp" type="text" placeholder="12/28" maxlength="5" class="w-full bg-emerald-950 border border-emerald-800 rounded-xl px-4 py-2.5 text-sm text-white font-mono focus:outline-none focus:border-amber-400">
+                            </div>
+                            <div>
+                                <label data-i18n="lblCardCvc" class="block text-[11px] font-semibold text-emerald-300 mb-1">CVC / CVV</label>
+                                <input id="input-card-cvc" type="password" placeholder="•••" maxlength="4" class="w-full bg-emerald-950 border border-emerald-800 rounded-xl px-4 py-2.5 text-sm text-white font-mono focus:outline-none focus:border-amber-400">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Option B: PayPal Section -->
+                    <div id="pay-paypal-section" class="hidden text-center p-6 bg-black/20 rounded-2xl border border-emerald-800/40 space-y-3">
+                        <i class="fa-brands fa-paypal text-4xl text-blue-400"></i>
+                        <p data-i18n="payPalDesc" class="text-xs text-emerald-200">
+                            Al hacer clic en completar, te conectarás de forma segura con PayPal para activar tu suscripción mensual de <strong>$100 USD</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Option C: WhatsApp Direct Section -->
+                    <div id="pay-whatsapp-section" class="hidden text-center p-6 bg-black/20 rounded-2xl border border-emerald-800/40 space-y-3">
+                        <i class="fa-brands fa-whatsapp text-4xl text-green-400"></i>
+                        <p data-i18n="waDirectDesc" class="text-xs text-emerald-200">
+                            ¿Prefieres pagar por Bizum (España), Zelle (EE.UU.), transferencia bancaria o coordinar directamente con el Maestro?
+                        </p>
+                        <button id="btn-subscribe-whatsapp-direct" type="button" class="px-5 py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-2 mx-auto">
+                            <i class="fa-brands fa-whatsapp text-base text-green-400"></i>
+                            <span data-i18n="btnOpenWAChat">Abrir chat de WhatsApp con el Maestro</span>
+                        </button>
+                    </div>
+
+                    <div class="pt-4 flex justify-between items-center">
+                        <button id="btn-step-3-back" class="text-xs text-emerald-300 hover:text-white font-medium flex items-center gap-1.5">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span data-i18n="btnBack">Volver</span>
+                        </button>
+                        <button id="btn-complete-subscription" class="btn-gold-shimmer font-bold text-sm py-3.5 px-8 rounded-xl flex items-center gap-2 shadow-xl">
+                            <i class="fa-solid fa-shield-check text-base"></i>
+                            <span data-i18n="btnConfirmSubscription">Confirmar Suscripción ($100/mes)</span>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Three.js (r128) CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <!-- Custom Modules -->
+    <script src="js/translations.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/three-scene.js"></script>
+    <script src="js/audio-player.js"></script>
+    <script src="js/subscription-modal.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
