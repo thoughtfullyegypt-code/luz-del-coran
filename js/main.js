@@ -407,11 +407,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update tab styles
             syllabusTabs.forEach(t => {
-                t.classList.remove('bg-amber-400', 'text-emerald-950', 'shadow-lg');
-                t.classList.add('bg-emerald-950/60', 'text-emerald-200', 'hover:bg-emerald-900/60');
+                t.className = 'syllabus-tab-btn bg-white text-slate-700 hover:bg-slate-100 font-semibold px-5 py-2.5 rounded-xl text-xs sm:text-sm border border-slate-200 transition-all flex items-center gap-2 shadow-sm';
+                const badge = t.querySelector('span:first-child');
+                if (badge) badge.className = 'w-5 h-5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-xs';
             });
-            tab.classList.remove('bg-emerald-950/60', 'text-emerald-200', 'hover:bg-emerald-900/60');
-            tab.classList.add('bg-amber-400', 'text-emerald-950', 'shadow-lg');
+            tab.className = 'syllabus-tab-btn bg-emerald-600 text-white font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-md transition-all flex items-center gap-2';
+            const activeBadge = tab.querySelector('span:first-child');
+            if (activeBadge) activeBadge.className = 'w-5 h-5 rounded-full bg-white text-emerald-800 flex items-center justify-center text-xs font-bold';
 
             // Switch content card
             syllabusCards.forEach(card => {
@@ -437,11 +439,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const isEn = window.currentLanguage === 'en';
 
             currencyButtons.forEach(b => {
-                b.classList.remove('bg-amber-400', 'text-emerald-950', 'font-bold');
-                b.classList.add('text-emerald-300', 'hover:text-white');
+                b.className = 'currency-toggle-btn px-4 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 font-semibold transition-all';
             });
-            btn.classList.add('bg-amber-400', 'text-emerald-950', 'font-bold');
-            btn.classList.remove('text-emerald-300', 'hover:text-white');
+            btn.className = 'currency-toggle-btn px-4 py-1.5 rounded-lg bg-emerald-700 text-white font-bold transition-all';
 
             if (cur === 'EUR') {
                 if (priceAmountEl) priceAmountEl.textContent = '92';
@@ -504,7 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     particleCount: 80,
                     spread: 60,
                     origin: { y: 0.7 },
-                    colors: ['#d4af37', '#10b981']
+                    colors: ['#059669', '#10b981', '#047857']
                 });
             }
 
@@ -527,12 +527,60 @@ document.addEventListener('DOMContentLoaded', () => {
     if (header) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 40) {
-                header.classList.add('bg-emerald-950/90', 'backdrop-blur-md', 'shadow-lg', 'shadow-black/20', 'border-b', 'border-emerald-800/40');
+                header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-slate-200');
             } else {
-                header.classList.remove('bg-emerald-950/90', 'backdrop-blur-md', 'shadow-lg', 'shadow-black/20', 'border-b', 'border-emerald-800/40');
+                header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-slate-200');
             }
         });
     }
+
+    // 11. Makhārij & Phonetics Studio Letter Audio Controller
+    const letterButtons = document.querySelectorAll('.btn-play-letter');
+    let currentLetterAudio = null;
+    let activeLetterBtn = null;
+
+    letterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const audioSrc = btn.getAttribute('data-audio-src');
+            if (!audioSrc) return;
+
+            const isEn = window.currentLanguage === 'en';
+            const defaultText = isEn ? 'Listen Articulation' : 'Escuchar Articulación';
+
+            // If already playing this button, pause it
+            if (currentLetterAudio && activeLetterBtn === btn && !currentLetterAudio.paused) {
+                currentLetterAudio.pause();
+                btn.innerHTML = `<i class="fa-solid fa-volume-high text-xs"></i> <span>${defaultText}</span>`;
+                activeLetterBtn = null;
+                return;
+            }
+
+            // Stop any currently playing audio
+            if (currentLetterAudio) {
+                currentLetterAudio.pause();
+                if (activeLetterBtn) {
+                    activeLetterBtn.innerHTML = `<i class="fa-solid fa-volume-high text-xs"></i> <span>${defaultText}</span>`;
+                }
+            }
+
+            currentLetterAudio = new Audio(audioSrc);
+            activeLetterBtn = btn;
+            btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin text-xs text-amber-300"></i> <span>${isEn ? 'Playing...' : 'Reproduciendo...'}</span>`;
+
+            currentLetterAudio.play().then(() => {
+                btn.innerHTML = `<i class="fa-solid fa-pause text-xs text-amber-300"></i> <span>${isEn ? 'Pause' : 'Pausar'}</span>`;
+            }).catch(e => {
+                console.warn('Audio play error:', e);
+                btn.innerHTML = `<i class="fa-solid fa-volume-high text-xs"></i> <span>${defaultText}</span>`;
+                activeLetterBtn = null;
+            });
+
+            currentLetterAudio.onended = () => {
+                btn.innerHTML = `<i class="fa-solid fa-volume-high text-xs"></i> <span>${defaultText}</span>`;
+                activeLetterBtn = null;
+            };
+        });
+    });
 
     console.log('Luz del Corán / Light of the Quran initialized successfully.');
 });

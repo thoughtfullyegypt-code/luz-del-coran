@@ -94,7 +94,10 @@ class SubscriptionEngine {
         const nextBtn2 = document.getElementById('btn-step-2-next');
         const backBtn2 = document.getElementById('btn-step-2-back');
         const backBtn3 = document.getElementById('btn-step-3-back');
-        const submitBtn = document.getElementById('btn-complete-subscription');
+        const btnStripe = document.getElementById('btn-pay-stripe');
+        const btnPaypal = document.getElementById('btn-pay-paypal');
+        const btnWa = document.getElementById('btn-pay-whatsapp');
+        const submitBtnLegacy = document.getElementById('btn-complete-subscription');
 
         if (nextBtn1) {
             nextBtn1.addEventListener('click', () => {
@@ -115,10 +118,31 @@ class SubscriptionEngine {
         if (backBtn2) backBtn2.addEventListener('click', () => this.goToStep(1));
         if (backBtn3) backBtn3.addEventListener('click', () => this.goToStep(2));
 
-        if (submitBtn) {
-            submitBtn.addEventListener('click', (e) => {
+        if (btnStripe) {
+            btnStripe.addEventListener('click', (e) => {
                 e.preventDefault();
-                this.handleFinalSubscription();
+                this.handleFinalSubscription('stripe', btnStripe);
+            });
+        }
+
+        if (btnPaypal) {
+            btnPaypal.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.handleFinalSubscription('paypal', btnPaypal);
+            });
+        }
+
+        if (btnWa) {
+            btnWa.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.handleFinalSubscription('whatsapp', btnWa);
+            });
+        }
+
+        if (submitBtnLegacy) {
+            submitBtnLegacy.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.handleFinalSubscription(this.formData.paymentMethod, submitBtnLegacy);
             });
         }
 
@@ -222,16 +246,17 @@ class SubscriptionEngine {
             const stepText = document.getElementById(`step-text-${i}`);
             if (stepBadge) {
                 if (i === stepNumber) {
-                    stepBadge.className = 'w-8 h-8 rounded-full bg-amber-400 text-emerald-950 flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-amber-400/20';
-                    if (stepText) stepText.className = 'text-xs font-semibold text-amber-300';
-                } else if (i < stepNumber) {
-                    stepBadge.className = 'w-8 h-8 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-sm';
-                    stepBadge.innerHTML = '<i class="fa-solid fa-check text-xs"></i>';
-                    if (stepText) stepText.className = 'text-xs font-medium text-emerald-300';
-                } else {
-                    stepBadge.className = 'w-8 h-8 rounded-full bg-emerald-900/60 text-emerald-400/60 border border-emerald-700/40 flex items-center justify-center font-bold text-sm';
+                    stepBadge.className = 'w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-emerald-100';
                     stepBadge.textContent = `${i}`;
-                    if (stepText) stepText.className = 'text-xs font-medium text-emerald-500';
+                    if (stepText) stepText.className = 'text-xs font-bold text-emerald-800';
+                } else if (i < stepNumber) {
+                    stepBadge.className = 'w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm';
+                    stepBadge.innerHTML = '<i class="fa-solid fa-check text-xs"></i>';
+                    if (stepText) stepText.className = 'text-xs font-medium text-emerald-700';
+                } else {
+                    stepBadge.className = 'w-8 h-8 rounded-full bg-slate-100 text-slate-400 border border-slate-200 flex items-center justify-center font-bold text-sm';
+                    stepBadge.textContent = `${i}`;
+                    if (stepText) stepText.className = 'text-xs font-medium text-slate-400';
                 }
             }
         }
@@ -364,16 +389,23 @@ class SubscriptionEngine {
         window.open(waUrl, '_blank');
     }
 
-    handleFinalSubscription() {
-        const submitBtn = document.getElementById('btn-complete-subscription');
-        const originalContent = submitBtn.innerHTML;
+    handleFinalSubscription(method = 'stripe', triggerBtn = null) {
         const isEn = this.getLang() === 'en';
+        const btn = triggerBtn || document.getElementById(`btn-pay-${method}`) || document.getElementById('btn-complete-subscription');
+        const originalContent = btn ? btn.innerHTML : '';
 
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = `
-            <i class="fa-solid fa-circle-notch fa-spin"></i>
-            <span>${isEn ? 'Processing secure subscription...' : 'Procesando suscripción segura...'}</span>
-        `;
+        if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = `
+                <i class="fa-solid fa-circle-notch fa-spin"></i>
+                <span>${isEn ? 'Connecting secure gateway...' : 'Conectando pasarela segura...'}</span>
+            `;
+        }
+
+        // If WhatsApp direct was selected, open WhatsApp directly with student info
+        if (method === 'whatsapp') {
+            this.openWhatsAppWithStudentData();
+        }
 
         setTimeout(() => {
             this.saveLeadToLocalStorage();
@@ -383,17 +415,19 @@ class SubscriptionEngine {
                     particleCount: 120,
                     spread: 80,
                     origin: { y: 0.6 },
-                    colors: ['#d4af37', '#10b981', '#fceda2', '#059669']
+                    colors: ['#c5a059', '#10b981', '#dfc18b', '#059669']
                 });
             }
 
-            this.showSuccessScreen();
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalContent;
-        }, 1400);
+            this.showSuccessScreen(method);
+            if (btn) {
+                btn.disabled = false;
+                btn.innerHTML = originalContent;
+            }
+        }, 1200);
     }
 
-    showSuccessScreen() {
+    showSuccessScreen(method = 'stripe') {
         const enrollId = 'LC-' + Math.floor(100000 + Math.random() * 900000);
         const container = document.getElementById('sub-modal-content-wrapper');
         if (!container) return;
@@ -404,59 +438,59 @@ class SubscriptionEngine {
         if (isEn) {
             container.innerHTML = `
                 <div class="text-center py-6 px-4">
-                    <div class="w-20 h-20 mx-auto rounded-full bg-emerald-500/20 border-2 border-emerald-400 flex items-center justify-center mb-5 shadow-lg shadow-emerald-500/20 animate-bounce">
-                        <i class="fa-solid fa-check text-3xl text-emerald-400"></i>
+                    <div class="w-16 h-16 mx-auto rounded-full bg-emerald-100 flex items-center justify-center mb-4 shadow-sm animate-bounce">
+                        <i class="fa-solid fa-check text-2xl text-emerald-700"></i>
                     </div>
 
-                    <span class="inline-block px-3 py-1 bg-amber-400/20 border border-amber-400/40 rounded-full text-xs font-semibold text-amber-300 uppercase tracking-widest mb-3">
+                    <span class="inline-block px-3 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs font-bold text-emerald-800 uppercase tracking-wider mb-2">
                         Enrollment Confirmed Successfully!
                     </span>
 
-                    <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-2">
+                    <h3 class="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mb-2">
                         Welcome to Light of the Quran, ${firstName}!
                     </h3>
 
-                    <p class="text-emerald-200/90 text-sm max-w-lg mx-auto mb-6">
-                        Your monthly subscription for <strong>$100 USD (2 weekly 1-hour sessions)</strong> has been recorded. The Teacher has received your enrollment file and will contact you directly via WhatsApp.
+                    <p class="text-slate-600 text-sm max-w-lg mx-auto mb-6">
+                        Your monthly subscription for <strong>$100 USD (2 weekly 1-hour sessions)</strong> has been recorded. The Teacher has received your enrollment file and will contact you directly via WhatsApp to coordinate your first session.
                     </p>
 
                     <!-- Receipt Card -->
-                    <div class="bg-emerald-950/80 border border-emerald-800/60 rounded-2xl p-5 max-w-md mx-auto text-left mb-6 shadow-inner">
-                        <div class="flex justify-between items-center border-b border-emerald-800/50 pb-3 mb-3 text-xs">
-                            <span class="text-emerald-400 font-semibold uppercase">Enrollment ID:</span>
-                            <span class="font-mono text-amber-300 font-bold">${enrollId}</span>
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 max-w-md mx-auto text-left mb-6 shadow-sm">
+                        <div class="flex justify-between items-center border-b border-slate-200 pb-3 mb-3 text-xs">
+                            <span class="text-slate-500 font-semibold uppercase tracking-wider">Enrollment ID:</span>
+                            <span class="font-mono text-emerald-800 font-bold">${enrollId}</span>
                         </div>
-                        <div class="space-y-2 text-xs text-emerald-200/90">
+                        <div class="space-y-2 text-xs text-slate-700">
                             <div class="flex justify-between">
-                                <span class="text-emerald-400">Student:</span>
-                                <span class="font-medium text-white">${this.formData.studentName}</span>
+                                <span class="text-slate-500">Student:</span>
+                                <span class="font-bold text-slate-900">${this.formData.studentName}</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-emerald-400">Contact WhatsApp:</span>
-                                <span class="font-mono text-white">${this.formData.countryCode} ${this.formData.whatsappNumber}</span>
+                                <span class="text-slate-500">Contact WhatsApp:</span>
+                                <span class="font-mono text-slate-900 font-medium">${this.formData.countryCode} ${this.formData.whatsappNumber}</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-emerald-400">Class Plan:</span>
-                                <span class="font-medium text-amber-300">2 weekly sessions (8h/month)</span>
+                                <span class="text-slate-500">Class Plan:</span>
+                                <span class="font-bold text-emerald-800">2 weekly sessions (8h/month 1-on-1)</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-emerald-400">Monthly Fee:</span>
-                                <span class="font-bold text-white">$100.00 USD / month</span>
+                                <span class="text-slate-500">Monthly Fee:</span>
+                                <span class="font-bold text-slate-900">$100.00 USD / month</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-emerald-400">Class Platform:</span>
-                                <span class="text-white">Zoom / Google Meet (live)</span>
+                                <span class="text-slate-500">Live Platform:</span>
+                                <span class="text-slate-800 font-medium">Zoom / Google Meet (1-on-1)</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Action buttons -->
                     <div class="flex flex-col sm:flex-row gap-3 justify-center items-center max-w-md mx-auto">
-                        <button id="btn-success-connect-wa" class="w-full sm:w-auto flex-1 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5">
-                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <button id="btn-success-connect-wa" class="w-full sm:w-auto flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-md flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
                             <span>Message Teacher on WhatsApp</span>
                         </button>
-                        <button id="btn-success-close" class="w-full sm:w-auto bg-emerald-900/60 hover:bg-emerald-800/80 text-emerald-200 font-medium py-3.5 px-6 rounded-xl border border-emerald-700/50 transition-all">
+                        <button id="btn-success-close" class="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium py-3.5 px-6 rounded-xl border border-slate-200 transition-all">
                             Close Window
                         </button>
                     </div>
@@ -465,59 +499,59 @@ class SubscriptionEngine {
         } else {
             container.innerHTML = `
                 <div class="text-center py-6 px-4">
-                    <div class="w-20 h-20 mx-auto rounded-full bg-emerald-500/20 border-2 border-emerald-400 flex items-center justify-center mb-5 shadow-lg shadow-emerald-500/20 animate-bounce">
-                        <i class="fa-solid fa-check text-3xl text-emerald-400"></i>
+                    <div class="w-16 h-16 mx-auto rounded-full bg-emerald-100 flex items-center justify-center mb-4 shadow-sm animate-bounce">
+                        <i class="fa-solid fa-check text-2xl text-emerald-700"></i>
                     </div>
 
-                    <span class="inline-block px-3 py-1 bg-amber-400/20 border border-amber-400/40 rounded-full text-xs font-semibold text-amber-300 uppercase tracking-widest mb-3">
+                    <span class="inline-block px-3 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs font-bold text-emerald-800 uppercase tracking-wider mb-2">
                         ¡Matrícula Confirmada con Éxito!
                     </span>
 
-                    <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-2">
+                    <h3 class="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mb-2">
                         ¡Bienvenido a Luz del Corán, ${firstName}!
                     </h3>
 
-                    <p class="text-emerald-200/90 text-sm max-w-lg mx-auto mb-6">
-                        Tu suscripción mensual de <strong>$100 USD (2 sesiones de 1 hora por semana)</strong> ha sido registrada. El Maestro ha recibido tu ficha de inscripción y se pondrá en contacto contigo de inmediato por WhatsApp.
+                    <p class="text-slate-600 text-sm max-w-lg mx-auto mb-6">
+                        Tu suscripción mensual de <strong>$100 USD (2 sesiones de 1 hora por semana)</strong> ha sido registrada. El Maestro ha recibido tu ficha de inscripción y se pondrá en contacto contigo de inmediato por WhatsApp para coordinar tu primera clase.
                     </p>
 
                     <!-- Receipt Card -->
-                    <div class="bg-emerald-950/80 border border-emerald-800/60 rounded-2xl p-5 max-w-md mx-auto text-left mb-6 shadow-inner">
-                        <div class="flex justify-between items-center border-b border-emerald-800/50 pb-3 mb-3 text-xs">
-                            <span class="text-emerald-400 font-semibold uppercase">ID de Matrícula:</span>
-                            <span class="font-mono text-amber-300 font-bold">${enrollId}</span>
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 max-w-md mx-auto text-left mb-6 shadow-sm">
+                        <div class="flex justify-between items-center border-b border-slate-200 pb-3 mb-3 text-xs">
+                            <span class="text-slate-500 font-semibold uppercase tracking-wider">ID de Matrícula:</span>
+                            <span class="font-mono text-emerald-800 font-bold">${enrollId}</span>
                         </div>
-                        <div class="space-y-2 text-xs text-emerald-200/90">
+                        <div class="space-y-2 text-xs text-slate-700">
                             <div class="flex justify-between">
-                                <span class="text-emerald-400">Estudiante:</span>
-                                <span class="font-medium text-white">${this.formData.studentName}</span>
+                                <span class="text-slate-500">Estudiante:</span>
+                                <span class="font-bold text-slate-900">${this.formData.studentName}</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-emerald-400">WhatsApp de contacto:</span>
-                                <span class="font-mono text-white">${this.formData.countryCode} ${this.formData.whatsappNumber}</span>
+                                <span class="text-slate-500">WhatsApp de contacto:</span>
+                                <span class="font-mono text-slate-900 font-medium">${this.formData.countryCode} ${this.formData.whatsappNumber}</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-emerald-400">Plan de Clases:</span>
-                                <span class="font-medium text-amber-300">2 sesiones semanales (8h/mes)</span>
+                                <span class="text-slate-500">Plan de Clases:</span>
+                                <span class="font-bold text-emerald-800">2 sesiones semanales (8h/mes 1 a 1)</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-emerald-400">Cuota Mensual:</span>
-                                <span class="font-bold text-white">$100.00 USD / mes</span>
+                                <span class="text-slate-500">Cuota Mensual:</span>
+                                <span class="font-bold text-slate-900">$100.00 USD / mes</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-emerald-400">Plataforma de clase:</span>
-                                <span class="text-white">Zoom / Google Meet (en vivo)</span>
+                                <span class="text-slate-500">Plataforma en vivo:</span>
+                                <span class="text-slate-800 font-medium">Zoom / Google Meet (1 a 1)</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Action buttons -->
                     <div class="flex flex-col sm:flex-row gap-3 justify-center items-center max-w-md mx-auto">
-                        <button id="btn-success-connect-wa" class="w-full sm:w-auto flex-1 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5">
-                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <button id="btn-success-connect-wa" class="w-full sm:w-auto flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-md flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
                             <span>Contactar al Maestro ahora</span>
                         </button>
-                        <button id="btn-success-close" class="w-full sm:w-auto bg-emerald-900/60 hover:bg-emerald-800/80 text-emerald-200 font-medium py-3.5 px-6 rounded-xl border border-emerald-700/50 transition-all">
+                        <button id="btn-success-close" class="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium py-3.5 px-6 rounded-xl border border-slate-200 transition-all">
                             Cerrar ventana
                         </button>
                     </div>
@@ -571,18 +605,18 @@ class SubscriptionEngine {
     }
 
     showInputError(inputEl, message) {
-        inputEl.classList.add('border-red-500', 'bg-red-950/20');
+        inputEl.classList.add('border-red-500', 'bg-red-50');
         let errorEl = inputEl.parentElement.querySelector('.error-msg');
         if (!errorEl) {
             errorEl = document.createElement('p');
-            errorEl.className = 'error-msg text-xs text-red-400 mt-1 font-medium flex items-center gap-1';
+            errorEl.className = 'error-msg text-xs text-red-600 mt-1 font-medium flex items-center gap-1';
             inputEl.parentElement.appendChild(errorEl);
         }
         errorEl.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> ${message}`;
     }
 
     clearInputError(inputEl) {
-        inputEl.classList.remove('border-red-500', 'bg-red-950/20');
+        inputEl.classList.remove('border-red-500', 'bg-red-50');
         const errorEl = inputEl.parentElement.querySelector('.error-msg');
         if (errorEl) errorEl.remove();
     }
